@@ -1,1 +1,0 @@
-# ProyectoG2-Informatorio
