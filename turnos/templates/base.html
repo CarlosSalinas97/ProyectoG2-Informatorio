@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CATALOGO</title>
+
+</head>
+<body>
+	<div>
+		<a href="{% url 'home' %}">Home</a><br>
+		
+		{% if user.is_authenticated %}
+			<p>HOLA {{user.username}}</p>
+			<a href="{% url 'logout' %}">SALIR</a><br>
+		{% else %}
+			<a href="{% url 'login' %}">login</a><br>
+		{% endif %}
+
+	</div>
+	<div  style="margin-top: 200px">
+		
+			{% block contenido %}
+				<h1>SOY EL BASEEEEEEEEEEEEEEEEEEEEEEEEEEEE!!!</h1>
+			{% endblock %}
+
+	</div>
+</body>
+</html>
