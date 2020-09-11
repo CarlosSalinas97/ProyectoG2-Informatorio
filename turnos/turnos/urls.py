@@ -27,4 +27,8 @@ urlpatterns = [
     path('',views.Home,name='home'),
     path('Login',auth.LoginView.as_view(template_name="usuarios/login.html"),name="login"),
     path('Logout',auth.LogoutView.as_view(),name="logout"),
+
+    #URLS de apps
+    path('turnos',include('apps.turnos.urls')),
+    
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

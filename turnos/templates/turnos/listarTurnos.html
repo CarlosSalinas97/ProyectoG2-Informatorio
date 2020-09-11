@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+            <h1>HOLA, SOY LISTAR TURNOS</h1>
+            
+            {% for p in turnos %}
+            <p><b>idTurno: </b>{{p.id_turno}}</p>
+            <p><b>DNI: </b>{{p.DNI}}</p>
+            <p><b>id_local: </b>{{p.id_local}}</p>
+            <p><b>dia: </b>{{p.dia}}</p>
+            <p><b>invitado1: </b>{{p.invitado1}}</p>
+            <p><b>invitado2: </b>{{p.invitado2}}</p>
+            <p><b>invitado3: </b>{{p.invitado3}}</p>
+            <p>___________________________________________________________________</p>
+            {% endfor %}
+{% endblock %}
