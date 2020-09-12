@@ -24,8 +24,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'b+pr9dfjo7h*)=n#81iotd@7-g9p17dth98wo8(ptp-&*ix#(0'
 
+AUTH_USER_MODEL = 'usuarios.Usuario'
 LOGIN_REDIRECT_URL = reverse_lazy('home')
 LOGOUT_REDIRECT_URL = reverse_lazy('login')
+
+LOGIN_URL = reverse_lazy('login')
 
 # Application definition
 
@@ -36,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'apps.usuarios',
     'apps.turnos',
 ]
 

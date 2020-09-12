@@ -5,3 +5,11 @@ from .models import Usuario
 from django.urls import reverse_lazy
 
 # Create your views here.
+
+
+
+class RegistroUsuario(CreateView):
+	model = Usuario
+	form_class = RegistroUsuarioForm
+	template_name = 'usuarios/registro.html'
+	success_url = reverse_lazy('home')
