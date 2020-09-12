@@ -28,6 +28,9 @@ AUTH_USER_MODEL = 'usuarios.Usuario'
 LOGIN_REDIRECT_URL = reverse_lazy('home')
 LOGOUT_REDIRECT_URL = reverse_lazy('login')
 
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
+
+
 LOGIN_URL = reverse_lazy('login')
 
 # Application definition
@@ -41,6 +44,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'apps.usuarios',
     'apps.turnos',
+    'crispy_forms',
+
 ]
 
 MIDDLEWARE = [
