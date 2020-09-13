@@ -4,7 +4,7 @@ from django.contrib.auth.models import AbstractUser
 # Create your models here.
 
 class Usuario(AbstractUser):
-	DNI = models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='DNI')
+	DNI = models.PositiveIntegerField(primary_key=True, serialize=False, verbose_name='DNI')
 	cumpleanio = models.DateField(null=True)
 	email = models.EmailField('email address', unique=True)
 	USERNAME_FIELD = 'email'
