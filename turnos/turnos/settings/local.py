@@ -12,7 +12,7 @@ ALLOWED_HOSTS = []
 DATABASES = {
     'default': {
         'ENGINE': 'sql_server.pyodbc',
-        'NAME':'TurnosDB2',
+        'NAME':'TurnosDB',
         'Trusted_Connection':'yes',
         'HOST': 'localhost\SQLEXPRESS',
         'OPTIONS':{
