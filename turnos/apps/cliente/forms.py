@@ -10,7 +10,7 @@ class ClienteForm(UserCreationForm):
 
 	class Meta:
 		model = Usuario 
-		fields = ['username','email','first_name','last_name','password1','password2', 'DNI', 'cumpleanio']
+		fields = ['username','email','first_name','last_name','password1','password2', 'DNI', 'fecha_nacimiento']
 
 	@transaction.atomic
 	def save(self):
