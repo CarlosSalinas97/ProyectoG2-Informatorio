@@ -1,5 +1,6 @@
-
 {% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
 
 {% block contenido %}
 
@@ -7,7 +8,7 @@
 			<h1>FORMULARIO PARA MODIFICAR los datos del cliente!</h1>	
 			{{form.errors}}
 			<form method="POST">{% csrf_token %}
-					{{form.as_p}}
+					{{ form|crispy }}
 					<input type="submit" value="MODIFICAR">
 			</form>
 
