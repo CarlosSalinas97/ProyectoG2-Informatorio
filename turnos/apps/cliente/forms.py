@@ -18,3 +18,5 @@ class ClienteForm(UserCreationForm):
 		usuario.save()
 		Cliente.objects.create(usuario=usuario)
 		return usuario
+
+

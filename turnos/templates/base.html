@@ -30,6 +30,9 @@
 				{% if user.is_authenticated %}
 				<div class="row pt-1">
 					<div class="col-6 text-right p-1"><span>{{user.username}}</span></div>
+					<div>
+					<a href="{% url 'usuarios:modificar' user.DNI %}">Modificar Cliente</a>
+					</div>
 					<div class="col-6 text-left">
 						<form action="{% url 'logout' %}">
 							<button type="submit" class="btn btn-light btn-sm">Salir</button>

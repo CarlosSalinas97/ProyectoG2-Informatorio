@@ -11,5 +11,7 @@ class Usuario(AbstractUser):
 	REQUIRED_FIELDS = ['username']
 	es_duenio = models.BooleanField(default=False,null=False, blank=True)
 	
+	def __str__(self):
+		return self.first_name + self.last_name
 	
 	
