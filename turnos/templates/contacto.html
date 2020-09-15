@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+{% block contenido %}
+
+
+<html>
+<head>
+	<title>Contactanos</title>
+</head>
+<body>
+	
+	<h1>Contactanos</h1>
+
+	{% if form.errors %}
+	
+	<p style="color: red;">Por favor corrige lo siguiente:</p>
+
+	{% endif %}
+
+	<form action="" method="post">{% csrf_token %}
+		<table>
+			{{ form|crispy }}
+		</table>
+		<input type="submit" value="Enviar">
+	</form>
+</body>
+</html>
+
+{% endblock%}
