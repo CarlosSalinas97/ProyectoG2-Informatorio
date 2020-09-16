@@ -1,4 +1,5 @@
 from django.db import models
+from apps.usuarios.models import Usuario
 
 
 
@@ -14,6 +15,8 @@ class Autoevaluaciones(models.Model):
 	cefalea = models.BooleanField(choices=BOOL_CHOICES)
 	vomito = models.BooleanField(choices=BOOL_CHOICES)
 	gusto_olfato = models.BooleanField(choices=BOOL_CHOICES)
+	usuario_test = models.OneToOneField(Usuario,related_name = 'usuario_test', null=True, on_delete = models.SET_NULL)
+	resultado = models.CharField(max_length=10)
 
 	sintomas = (fiebre, tos, diarrea, dolor_garganta, dificultad_respiratoria, dolor_muscular, cefalea, vomito, gusto_olfato)
 
@@ -24,13 +27,6 @@ class Autoevaluaciones(models.Model):
 				contador +=1
 
 		if contador > 2 or self.gusto_olfato:
-			return True
+			self.resultado = "True"
 		else:
-			return False
-
-		
-
-
-
-	
-
+			self.resultado = "False"
