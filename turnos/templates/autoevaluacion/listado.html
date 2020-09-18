@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+
+			<h1>SOY el resultado de tu autotest =)!</h1>
+
+			{% for p in object_list %}
+
+				<p><b>clave: </b>{{p.clave}}</p>
+				<p>-------------</p>
+				<p><b>fiebre: </b>{{p.fiebre}}</p>
+				<p><b>tos: </b>{{p.tos}}</p>
+				<p><b>diarrea: </b>{{p.diarrea}}</p>
+				<p><b>dolor_garganta: </b>{{p.dolor_garganta}}</p>
+				<p><b>dificultad_respiratoria: </b>{{p.dificultad_respiratoria}}</p>
+				<p><b>dolor_muscular: </b>{{p.dolor_muscular}}</p>
+				<p><b>cefalea: </b>{{p.cefalea}}</p>
+				<p><b>vomito: </b>{{p.vomito}}</p>
+				<p><b>gusto_olfato: </b>{{p.gusto_olfato}}</p>
+				<p><b>resultado: </b>{{p.resultado}}</p>
+				<p>-------------</p>
+
+			{% endfor %}
+
+{% endblock %}
