@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block contenido %}
+			<h1>¡Autoevaluación!</h1>
+            {{form.errors}}
+            <form action="autoevaluaciontestFuncion" method="post">
+                {% csrf_token %}
+                {{ form }}
+                {{ user.DNI }}
+                <input type="submit" value="Submit">
+            </form>
+{% endblock%}
