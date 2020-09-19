@@ -6,4 +6,4 @@ class AutoevaluacionForm(forms.ModelForm):
 	class Meta:
 		model = Autoevaluaciones
 		fields = '__all__'
-		exclude = ['resultado']
+		exclude = ['resultado','usuario_test']

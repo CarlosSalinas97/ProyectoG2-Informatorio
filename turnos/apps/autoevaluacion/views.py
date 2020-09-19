@@ -20,11 +20,11 @@ class Listar(ListView):
 	template_name = 'autoevaluacion/listado.html'
 
 def CrearEvaluacion(request):
+	usuario12 = request.user.DNI
 	if request.method == 'POST':
-		form = AutoevaluacionForm(request.POST)
+		form = AutoevaluacionForm(request.POST, usuario12)
 		return HttpResponseRedirect('')
 	else:
 		form = AutoevaluacionForm()
-		usuario_test = request.GET.get('user',None)
 
-	return render(request, 'autoevaluacion/testFuncion.html', {'form': form})
+	return render(request, 'autoevaluacion/testFuncion.html',{'form': form})
