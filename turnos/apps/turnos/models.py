@@ -9,8 +9,8 @@ class Turnos(models.Model):
     id_local = models.PositiveIntegerField()
     dia = models.DateField()
     #FKUsuario
-    invitado1 = models.PositiveIntegerField(null = True,blank=True)
+    invitado1 = models.PositiveIntegerField(null = True, blank = True)
     #FKUsuario
-    invitado2 = models.PositiveIntegerField(null = True,blank=True)
+    invitado2 = models.PositiveIntegerField(null = True, blank = True)
     #FKUsuario
-    invitado3 = models.PositiveIntegerField(null = True,blank=True)
+    invitado3 = models.PositiveIntegerField(null = True, blank = True)
