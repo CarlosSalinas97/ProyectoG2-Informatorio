@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'apps.turnos',
     'apps.autoevaluacion',
     'crispy_forms',
+    'apps.duenio',
 ]
 
 MIDDLEWARE = [

@@ -33,6 +33,7 @@ urlpatterns = [
     path('turnos',include('apps.turnos.urls')),
     path('usuarios',include('apps.usuarios.urls')),
     path('cliente',include('apps.cliente.urls')),
+    path('duenio',include('apps.duenio.urls')),
     path('autoevaluacion',include('apps.autoevaluacion.urls')),
 
     
