@@ -1,11 +1,11 @@
-from django.shortcuts import render
-from .models import Autoevaluaciones
-from apps.usuarios.models import Usuario
+from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic.list import ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import CreateView
 from django.http import HttpResponseRedirect
+
+from .models import Autoevaluaciones
 from .forms import AutoevaluacionForm
 
 # Create your views here.
@@ -20,10 +20,11 @@ class Listar(ListView):
 	template_name = 'autoevaluacion/listado.html'
 
 def CrearEvaluacion(request):
-	usuario12 = request.user.DNI
 	if request.method == 'POST':
-		form = AutoevaluacionForm(request.POST, usuario12)
-		return HttpResponseRedirect('')
+		form = AutoevaluacionForm(request.POST)
+		if form.is_valid():
+			form.save()
+			return redirect('/', pk=post.clave)
 	else:
 		form = AutoevaluacionForm()
 
