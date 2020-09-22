@@ -6,6 +6,10 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 	<!-- Styles CSS -->
 	<link rel="stylesheet" href="../static/css/base.css">
+	<!-- Scripts -->
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <body>
 
@@ -16,7 +20,7 @@
 				<a class="navbar-brand" href="{% url 'home' %}">DJANGO - INFO</a>
 			</div>
 			<div class="col-6">
-				<nav class="navbar navbar-expand-sm justify-content-center">
+				<nav class="navbar navbar-expand-sm">
 					<ul class="navbar-nav">
 						<li class="nav-item pl-2 pr-2"></li>
 						<li class="nav-item pl-2 pr-2"><a href="{% url 'home' %}">Nosotros</a></li>
@@ -26,32 +30,34 @@
 					</ul>
 				</nav>
 			</div>
+			<!-- Dropdown -->
 			<div class="col-3">
 				{% if user.is_authenticated %}
-				<div class="row pt-1">
-					<div class="col-6 text-right p-1"><span>{{user.username}}</span></div>
-					<div class="col-6 text-right p-1"><span>
-					<a href="{% url 'usuarios:modificar' user.DNI %}">Modificar Cliente</a></span></div>
-					<div>
-					<span>
-					<a href="{% url 'autoevaluacion:crearFuncion' %}">Autoevaluacion</a></span></div>
-					<div>
-					<span>
-					<a href="{% url 'autoevaluacion:listar' %}">Resultado Autoevaluación</a></span></div>
-					<div class="col-6 text-left">
-						<form action="{% url 'logout' %}">
-							<button type="submit" class="btn btn-light btn-sm">Salir</button>
-						</form>
-					</div>
-				</div>
+				<nav class="navbar navbar-expand-sm">
+					<ul class="navbar-nav">
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+								{{user.username}}
+							</a>
+							<div class="dropdown-menu">
+								<a class="dropdown-item" href="{% url 'usuarios:modificar' user.DNI %}">Modificar Cliente</a>
+								<a class="dropdown-item" href="{% url 'autoevaluacion:crearFuncion'%}">Autoevaluacion</a>
+								<a class="dropdown-item" href="{% url 'autoevaluacion:listar' %}">Resultado Autoevaluación</a>
+								<form action="{% url 'logout' %}">
+									<button type="submit" class="btn btn-light btn-sm">Salir</button>
+								</form>
+							</div>
+						</li>
+					</ul>
+				</nav>
 				{% else %}
 					<a href="{% url 'login' %}">Login</a>
 					<a href="{% url 'cliente:registrar_cliente' %}">Registrarse</a>
+					<a href="{% url 'duenio:registrar_duenio' %}">Registrar Dueño</a>
 				{% endif %}
 			</div>
 		</div>
 	</div>
-	
 
 	<!-- Bloques -->
 	<div class="container mt-5 bg-white">

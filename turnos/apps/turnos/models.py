@@ -1,16 +1,12 @@
 from django.db import models
+from apps.usuarios.models import Usuario
 
 # Create your models here.
 class Turnos(models.Model):
     id_turno = models.AutoField(primary_key = True)
-    #FKUsuario
-    DNI = models.PositiveIntegerField()
-    #FKLocal
+    DNI = models.OneToOneField(Usuario,related_name = 'turno_usuario', null=True, on_delete = models.SET_NULL)
     id_local = models.PositiveIntegerField()
     dia = models.DateField()
-    #FKUsuario
-    invitado1 = models.PositiveIntegerField(null = True, blank = True)
-    #FKUsuario
-    invitado2 = models.PositiveIntegerField(null = True, blank = True)
-    #FKUsuario
-    invitado3 = models.PositiveIntegerField(null = True, blank = True)
+    invitado1 = models.OneToOneField(Usuario,related_name = 'turno_invitado1', null=True, on_delete = models.SET_NULL, blank=True)
+    invitado2 = models.OneToOneField(Usuario,related_name = 'turno_invitado2', null=True, on_delete = models.SET_NULL, blank=True)
+    invitado3 = models.OneToOneField(Usuario,related_name = 'turno_invitado3', null=True, on_delete = models.SET_NULL, blank=True)
