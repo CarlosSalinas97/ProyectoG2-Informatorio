@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     'apps.autoevaluacion',
     'apps.cliente',
     'apps.duenio',
-    #'apps.empresa',
+    'apps.empresa',
     'apps.turnos',
     'apps.usuarios',
     'crispy_forms',

@@ -18,14 +18,8 @@ class Autoevaluaciones(models.Model):
 	usuario_test = models.OneToOneField(Usuario,related_name = 'usuario_test', null=True, on_delete = models.SET_NULL)
 	resultado = models.CharField(max_length=10)
 
-	sintomas = (fiebre, tos, diarrea, dolor_garganta, dificultad_respiratoria, dolor_muscular, cefalea, vomito, gusto_olfato)
-
-	def resultado_covid(self):
-		contador = 0
-		for i in self.sintomas:
-			if i:
-				contador +=1
-
+	
+	def resultado_covid(self, contador):
 		if contador > 2 or self.gusto_olfato:
 			self.resultado = "True"
 		else:

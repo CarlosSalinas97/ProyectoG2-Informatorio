@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic.list import ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 from django.views.generic import CreateView
 from django.http import HttpResponseRedirect
 
@@ -19,12 +20,22 @@ class Listar(ListView):
 	model = Autoevaluaciones
 	template_name = 'autoevaluacion/listado.html'
 
+@login_required
 def CrearEvaluacion(request):
 	if request.method == 'POST':
 		form = AutoevaluacionForm(request.POST)
 		if form.is_valid():
-			form.save()
-			return redirect('/', pk=post.clave)
+			x = form.save(commit=False)
+			x.usuario_test = request.user
+			
+			#for i in x.form:
+			#	if i:
+			#		cont += 1
+
+
+			x.resultado_covid()
+			x.save()
+			return HttpResponseRedirect('/')
 	else:
 		form = AutoevaluacionForm()
 
