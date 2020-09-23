@@ -25,3 +25,6 @@ def ListarTurnos(request):
 	print(todos)
 
 	return render(request,'turnos/listarTurnos.html',context)
+
+def MostrarRubros(request):
+	pass

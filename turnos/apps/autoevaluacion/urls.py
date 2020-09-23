@@ -10,5 +10,5 @@ app_name = 'autoevaluacion'
 urlpatterns = [
     path('Listar/', views.Listar.as_view(), name = 'listar'),
     path('Auto/', views.Crear.as_view(), name='crear'),
-    
+    path('testFuncion/', views.CrearEvaluacion, name='crearFuncion')
 ]

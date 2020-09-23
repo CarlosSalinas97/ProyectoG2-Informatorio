@@ -30,10 +30,11 @@ urlpatterns = [
     path('Logout',auth.LogoutView.as_view(),name="logout"),
 
     #URLS de apps
-    path('turnos',include('apps.turnos.urls')),
-    path('usuarios',include('apps.usuarios.urls')),
-    path('cliente',include('apps.cliente.urls')),
-    path('autoevaluacion',include('apps.autoevaluacion.urls')),
+    path('turnos/',include('apps.turnos.urls')),
+    path('usuarios/',include('apps.usuarios.urls')),
+    path('cliente/',include('apps.cliente.urls')),
+    path('autoevaluacion/',include('apps.autoevaluacion.urls')),
+    path('duenio/',include('apps.duenio.urls'))
 
     
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
