@@ -17,6 +17,7 @@ class Autoevaluaciones(models.Model):
 	gusto_olfato = models.BooleanField(choices=BOOL_CHOICES)
 	usuario_test = models.OneToOneField(Usuario,related_name = 'usuario_test', null=True, on_delete = models.SET_NULL)
 	resultado = models.CharField(max_length=10)
+	fecha_test = models.DateField()
 
 	
 	def resultado_covid(self):

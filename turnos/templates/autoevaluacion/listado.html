@@ -2,24 +2,116 @@
 
 {% block contenido %}
 
-			<h1>SOY el resultado de tu autotest =)!</h1>
+			<h1> Resultado de tu autotest</h1>
 
 			{% for p in object_list %}
 
-				<p><b>clave: </b>{{p.clave}}</p>
-				<p>-------------</p>
-				<p><b>fiebre: </b>{{p.fiebre}}</p>
-				<p><b>tos: </b>{{p.tos}}</p>
-				<p><b>diarrea: </b>{{p.diarrea}}</p>
-				<p><b>dolor_garganta: </b>{{p.dolor_garganta}}</p>
-				<p><b>dificultad_respiratoria: </b>{{p.dificultad_respiratoria}}</p>
-				<p><b>dolor_muscular: </b>{{p.dolor_muscular}}</p>
-				<p><b>cefalea: </b>{{p.cefalea}}</p>
-				<p><b>vomito: </b>{{p.vomito}}</p>
-				<p><b>gusto_olfato: </b>{{p.gusto_olfato}}</p>
-				<p><b>resultado: </b>{{p.resultado}}</p>
-				<p>-------------</p>
+				<p> Fecha de realización del test:  <strong> {{p.fecha_test}} </strong> </p>
+
+				<p> Los resultados del test son los siguientes: </p>
+
+				{% if p.fiebre %}
+    
+					<p>Presenta como síntoma fiebre: positivo. </p>
+					    
+					{% else %}
+					        
+					<p>Presenta como síntoma fiebre: negativo. </p>
+
+					{% endif %}
+
+				{% if p.tos %}
+    
+					<p>Presenta como síntoma tos: positivo. </p>
+					    
+					{% else %}
+					        
+					<p>Presenta como síntoma tos: negativo. </p>
+
+					{% endif %}
+
+				{% if p.diarrea %}
+    
+					<p>Presenta como síntoma diarrea: positivo. </p>
+					    
+					{% else %}
+					        
+					<p>Presenta como síntoma diarrea: negativo. </p>
+
+					{% endif %}
+
+				{% if p.dolor_garganta %}
+    
+					<p>Presenta como síntoma dolor de garganta: positivo. </p>
+					    
+					{% else %}
+					        
+					<p>Presenta como síntoma dolor de garganta: negativo. </p>
+
+					{% endif %}
+
+				{% if p.dificultad_respiratoria %}
+    
+					<p>Presenta como síntoma dificultad para respirar: positivo. </p>
+					    
+					{% else %}
+					        
+					<p>Presenta como síntoma dificultad para respirar: negativo. </p>
+
+					{% endif %}
+
+				{% if p.dolor_muscular %}
+    
+					<p>Presenta como síntoma dolor muscular: positivo. </p>
+					    
+					{% else %}
+					        
+					<p>Presenta como síntoma dolor muscular: negativo. </p>
+
+					{% endif %}
+
+				{% if p.cefalea %}
+    
+					<p>Presenta como síntoma cefalea: positivo. </p>
+					    
+					{% else %}
+					        
+					<p>Presenta como síntoma cefalea: negativo. </p>
+
+					{% endif %}
+
+				{% if p.vomito %}
+    
+					<p>Presenta como síntoma vomito: positivo. </p>
+					    
+					{% else %}
+					        
+					<p>Presenta como síntoma vomito: negativo. </p>
+
+					{% endif %}
+
+				{% if p.gusto_olfato %}
+    
+					<p>Presenta como síntoma pérdida de gusto u olfato: positivo. </p>
+					    
+					{% else %}
+					        
+					<p>Presenta como síntoma pérdida de gusto u olfato: negativo. </p>
+
+					{% endif %}
+
+				{% if p.resultado == True %}
+    
+					<h3> El resultado del autotest de COVID ha sido positivo. Por favor, no concurrir.</h3>
+					    
+					{% else %}
+					        
+					<h2> El resultado del autotest de COVID ha sido negativo.</h3>
+					<h3> Usted puede sacar un turno en cualquier local. </h2>
+
+					{% endif %}
 
 			{% endfor %}
+
 
 {% endblock %}

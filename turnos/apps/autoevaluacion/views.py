@@ -5,6 +5,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from django.views.generic import CreateView
 from django.http import HttpResponseRedirect
+import datetime
+
 
 from .models import Autoevaluaciones
 from .forms import AutoevaluacionForm
@@ -27,6 +29,7 @@ def CrearEvaluacion(request):
 		if form.is_valid():
 			x = form.save(commit=False)
 			x.usuario_test = request.user
+			x.fecha_test = datetime.datetime.now()
 
 			x.resultado_covid()
 			x.save()
