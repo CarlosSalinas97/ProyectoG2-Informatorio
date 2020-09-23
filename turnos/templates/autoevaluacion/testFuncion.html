@@ -7,7 +7,7 @@
             {{form.errors}}
             <form action="" method="post">
                 {% csrf_token %}
-                {{ form }}
+                {{ form|crispy }}
                 {{ usuario }}
                 <input type="submit" value="Submit">
             </form>

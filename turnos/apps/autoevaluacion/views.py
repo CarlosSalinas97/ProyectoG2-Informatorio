@@ -27,11 +27,6 @@ def CrearEvaluacion(request):
 		if form.is_valid():
 			x = form.save(commit=False)
 			x.usuario_test = request.user
-			
-			#for i in x.form:
-			#	if i:
-			#		cont += 1
-
 
 			x.resultado_covid()
 			x.save()
