@@ -11,13 +11,13 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('cliente', '0001_initial'),
+        ('duenio', '0001_initial'),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='cliente',
+            model_name='duenio',
             name='usuario',
-            field=models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, related_name='usuario_cliente', to=settings.AUTH_USER_MODEL),
+            field=models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, related_name='usuario_duenio', to=settings.AUTH_USER_MODEL),
         ),
     ]

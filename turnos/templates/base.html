@@ -26,9 +26,7 @@
 					<ul class="navbar-nav">
 						<li class="nav-item pl-2 pr-2"></li>
 						<li class="nav-item pl-2 pr-2"><a href="{% url 'home' %}">Nosotros</a></li>
-						<li class="nav-item pl-2 pr-2"><a href="{% url 'contacto' %}">Contacto</a>				
-						<li class="nav-item pl-2 pr-2"><a href="{% url 'turnos:listar'%}">Ver turnos</a></li>
-						<li class="nav-item pl-2 pr-2"><a href="{% url 'turnos:solicitar' %}">Solicitar turno</a></li>
+						<li class="nav-item pl-2 pr-2"><a href="{% url 'contacto' %}">Contacto</a>
 					</ul>
 				</nav>
 			</div>
@@ -42,9 +40,14 @@
 								{{user.username}}
 							</a>
 							<div class="dropdown-menu">
-								<a class="dropdown-item" href="{% url 'usuarios:modificar' user.DNI %}">Modificar Cliente</a>
-								<a class="dropdown-item" href="{% url 'autoevaluacion:crearFuncion'%}">Autoevaluacion</a>
-								<a class="dropdown-item" href="{% url 'autoevaluacion:listar' %}">Resultado Autoevaluación</a>
+								<a class="dropdown-item" href="{% url 'usuarios:modificar' user.DNI %}">Modificar Cliente (Vista solo de Cliente)</a>
+								<a class="dropdown-item" href="{% url 'autoevaluacion:crearFuncion'%}">Autoevaluacion (Vista solo de Cliente)</a>
+								<a class="dropdown-item" href="{% url 'autoevaluacion:listar' %}">Resultado Autoevaluación (Vista solo de Cliente)</a>
+								<a class="dropdown-item" href="{% url 'turnos:solicitar' %}">Solicitar turno (Vista solo de Cliente)</a>
+								<a class="dropdown-item" href="{% url 'empresa:registrar' %}">Registrar empresa (Vista solo de Dueños)</a>
+								<a class="dropdown-item" href="{% url 'empresa:listarDuenio' %}">Listar empresas (Vista solo de Dueños)</a>
+								<a class="dropdown-item" href="{% url 'empresa:listarTurnos' %}">Listar turnos (Vista solo de Dueños)</a>
+								<a class="dropdown-item" href="{% url 'empresa:listar' %}">Listar empresas (Vista de Turnos)</a>
 								<form action="{% url 'logout' %}">
 									<button type="submit" class="btn btn-light btn-sm">Salir</button>
 								</form>

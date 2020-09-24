@@ -1,7 +1,8 @@
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
-from apps.usuarios.models import Usuario
 from django.db import transaction
+
+from apps.usuarios.models import Usuario
 from .models import Duenio
 
 class DuenioForm(UserCreationForm):
@@ -19,3 +20,7 @@ class DuenioForm(UserCreationForm):
 		usuario.save()
 		Duenio.objects.create(usuario = usuario, CUIL = self.cleaned_data.get('CUIL'))
 		return usuario
+
+class ModificarDuenio(forms.ModelForm):
+	model = Usuario
+	fields = ['']

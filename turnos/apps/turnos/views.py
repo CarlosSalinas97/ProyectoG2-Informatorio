@@ -16,7 +16,7 @@ class SolicitarTurno(LoginRequiredMixin,CreateView):
 	template_name = 'turnos/solicitarTurno.html'
 	success_url = reverse_lazy('home')
 
-# Create your views here.
+
 @login_required
 def ListarTurnos(request):
 	context = {}
@@ -25,6 +25,3 @@ def ListarTurnos(request):
 	print(todos)
 
 	return render(request,'turnos/listarTurnos.html',context)
-
-def MostrarRubros(request):
-	pass

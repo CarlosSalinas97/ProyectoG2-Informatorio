@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+			<h1>FORMULARIO PARA MODIFICAR EMPRESAS</h1>	
+			{{form.errors}}
+			<form method="POST">{% csrf_token %}
+					{{form.as_p}}
+					<input type="submit" value="Modificar">
+			</form>
+			
+{% endblock %}

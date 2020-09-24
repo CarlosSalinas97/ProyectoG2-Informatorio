@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+
+        <h1>SOY TODAS LAS EMRPESAS</h1>
+
+            <h1>Filtros</h1>
+                <form action="" method="get">
+                    {% for r in rubros %}
+                        <button name="filtro" type="submit" value="{{r.id}}">{{r.nombre}}</button>
+                    {% endfor %}
+                </form>
+
+            <h1>Empresas</h1>
+			{% for p in empresas %}
+				<p><b>Nombre: </b>{{p.Nombre}}</p>
+				<p><b>Direccion: </b>{{p.Direccion}}</p>
+                <p><b>Telefono: </b>{{p.Telefono}}</p>
+                <p><b>Pagina: </b>{{p.PaginaWeb}}</p>
+				<p><b>Email: </b>{{p.Email}}</p>
+				<p><b>Horarios: -por la tarde: </b>{{p.HorarioSegundoAbre}} a {{p.HorarioSegundoCierra}}</p>
+                {% if p.Imagen %}
+                    <p><b>Imagen: </b></p>
+					<img src="{{p.Imagen.url}}" width="200" height="200">
+				{% else %}
+					<p>NO TENGO IMAGEN</p>
+                {% endif %}
+                
+                <p><b>Ver turnos disponibles: </b>ruta...</p>
+			{% endfor %}
+
+{% endblock %}

@@ -1,12 +1,17 @@
-from django.contrib.auth.forms import UserCreationForm
+from django.views.generic import CreateView
 from django import forms
-from apps.empresa.models import Empresa
 from django.db import transaction
-from .models import Cliente
 
-class EmpresaForm(UserCreationForm):
+from apps.empresa.models import Empresa
+from .models import Empresa
 
-
+class EmpresaForm(forms.ModelForm):
 	class Meta:
 		model = Empresa 
-		fields = ['CUIT', 'DNI', 'Nombre', 'Razon_Social', 'Superficie', 'Cant_empleados']
+		fields = '__all__'
+		exclude = ['DNI']
+
+class EmpresaModificar(forms.ModelForm):
+	class Meta:
+		model = Empresa
+		fields = ['Direccion','Telefono','PaginaWeb','Email','HorarioPrimeroAbre','HorarioPrimeroCierra','HorarioSegundoAbre','HorarioSegundoCierra','Imagen','Cant_empleados']
