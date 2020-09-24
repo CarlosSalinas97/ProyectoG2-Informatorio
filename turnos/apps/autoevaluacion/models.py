@@ -4,7 +4,7 @@ from apps.usuarios.models import Usuario
 
 
 class Autoevaluaciones(models.Model):
-	clave = models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='codigo')#Le digo explícitamente la clave del producto (de no hacerlo django lo hace de manera incremental -1,2,3,4,5,m-)
+	
 	BOOL_CHOICES = ((True, 'Sí'), (False, 'No'))
 	fiebre = models.BooleanField(choices=BOOL_CHOICES)
 	tos = models.BooleanField(choices=BOOL_CHOICES)
@@ -15,7 +15,7 @@ class Autoevaluaciones(models.Model):
 	cefalea = models.BooleanField(choices=BOOL_CHOICES)
 	vomito = models.BooleanField(choices=BOOL_CHOICES)
 	gusto_olfato = models.BooleanField(choices=BOOL_CHOICES)
-	usuario_test = models.OneToOneField(Usuario,related_name = 'usuario_test', null=True, on_delete = models.SET_NULL)
+	usuario_test = models.ForeignKey(Usuario, null=True, related_name = 'usuario_test', on_delete = models.SET_NULL)
 	resultado = models.CharField(max_length=10)
 	fecha_test = models.DateField()
 
