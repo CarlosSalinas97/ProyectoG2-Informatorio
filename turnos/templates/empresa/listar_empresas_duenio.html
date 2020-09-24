@@ -21,7 +21,7 @@
 					<p><b>Email: </b>{{p.Email}}</p>
 					<p><b>Horarios: </b></p>
 					{% if p.HorarioPrimeroAbre%}
-					<p>Por la mañana: {{p.HorarioSegundoAbre}} a {{p.HorarioSegundoCierra}}</p>
+					<p>Por la mañana: {{p.HorarioPrimeroAbre}} a {{p.HorarioPrimeroCierra}}</p>
 					{% endif %}
 					{% if p.HorarioSegundoAbre%}
 					<p>Por la tarde: {{p.HorarioSegundoAbre}} a {{p.HorarioSegundoCierra}}</p>
@@ -32,8 +32,7 @@
 					{% else %}
 						<p>NO TENGO IMAGEN</p>
 					{% endif %}
-					
-					<p><b>Ver turnos solicitados: </b>ruta...</p>
+					<p><b>Ver turnos solicitados: <a class="dropdown-item" href="{% url 'turnos:listar' %}">Ver turnos</a></p> <!-- VERIFICAR -->
 					<p><b>Modificar: </b><a class="dropdown-item" href="{% url 'empresa:modificar' p.CUIT%}">MODIFICAR</a></p>
 					<p><b>Eliminar: </b><a class="dropdown-item" href="{% url 'empresa:eliminar' p.CUIT%}">ELIMINAR</a></p>
 				{% else %}

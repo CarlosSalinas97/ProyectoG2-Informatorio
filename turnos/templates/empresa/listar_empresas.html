@@ -18,15 +18,19 @@
                 <p><b>Telefono: </b>{{p.Telefono}}</p>
                 <p><b>Pagina: </b>{{p.PaginaWeb}}</p>
 				<p><b>Email: </b>{{p.Email}}</p>
-				<p><b>Horarios: -por la tarde: </b>{{p.HorarioSegundoAbre}} a {{p.HorarioSegundoCierra}}</p>
+				{% if p.HorarioPrimeroAbre%}
+					<p>Por la mañana: {{p.HorarioPrimeroAbre}} a {{p.HorarioPrimeroCierra}}</p>
+				{% endif %}
+				{% if p.HorarioSegundoAbre%}
+					<p>Por la tarde: {{p.HorarioSegundoAbre}} a {{p.HorarioSegundoCierra}}</p>
+				{% endif %}
                 {% if p.Imagen %}
                     <p><b>Imagen: </b></p>
 					<img src="{{p.Imagen.url}}" width="200" height="200">
 				{% else %}
 					<p>NO TENGO IMAGEN</p>
                 {% endif %}
-                
-                <p><b>Ver turnos disponibles: </b>ruta...</p>
+                <p><a class="dropdown-item" href="{% url 'turnos:solicitar' p.CUIT%}">Ver turnos disponibles</a></p>
 			{% endfor %}
 
 {% endblock %}

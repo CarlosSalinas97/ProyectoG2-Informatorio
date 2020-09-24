@@ -11,15 +11,18 @@ from django.http import HttpResponseRedirect
 from .models import Empresa, Rubro
 from .forms import EmpresaForm, EmpresaModificar
 from apps.turnos.models import Turnos
+from apps.utils.funciones import PermisosMixin
 
 #TRABAJAR CON PERMISOS DE TIPOS DE USUARIO 
-class Modificar(LoginRequiredMixin, UpdateView):
+class Modificar(LoginRequiredMixin, PermisosMixin, UpdateView):
+	rol = 'duenio'
 	model = Empresa
 	form_class = EmpresaModificar
 	template_name = 'empresa/modificar.html'
 	success_url = reverse_lazy('empresa:listarDuenio')
 
-class Eliminar(LoginRequiredMixin, DeleteView):
+class Eliminar(LoginRequiredMixin, PermisosMixin, DeleteView):
+	rol = 'duenio'
 	model = Empresa
 	success_url = reverse_lazy('empresa:listarDuenio')
 
@@ -37,19 +40,12 @@ def RegistrarEmpresa(request):
 
 	return render(request, 'empresa/registro_empresa.html',{'form': form})
 
-#No esta en uso
-""" def ListarEmpresas(request):
-	context = {}
-	todos = Empresa.objects.all()
-	context['empresas'] = todos
-
-	return render(request,'empresa/listar_empresas.html',context) """
-
 
 def Filtros(request):
 	context = {}
 	rubros = Rubro.objects.all()
 	context['rubros'] = rubros
+	usuario = request.user
 	id_rubro = request.GET.get('filtro',None)
 
 	if id_rubro:
@@ -59,23 +55,10 @@ def Filtros(request):
 		todos = Empresa.objects.all()
 		context['empresas'] = todos
 
-	return render(request,'empresa/listar_empresas.html',context)
-
-#Idem a la funcion de arriba, pero solo para los dueños. Buscar como simplificar con las restricciones de tipo de usuario
-def FiltrosDuenio(request):
-	context = {}
-	rubros = Rubro.objects.all()
-	context['rubros'] = rubros
-	id_rubro = request.GET.get('filtro',None)
-
-	if id_rubro:
-		resultado = Empresa.objects.filter(Rubro = id_rubro)
-		context['empresas'] = resultado
+	if usuario.es_duenio:
+		return render(request,'empresa/listar_empresas_duenio.html',context)
 	else:
-		todos = Empresa.objects.all()
-		context['empresas'] = todos
-
-	return render(request,'empresa/listar_empresas_duenio.html',context)
+		return render(request,'empresa/listar_empresas.html',context)
 
 
 #Solo disponible para usuario con rol de Dueño

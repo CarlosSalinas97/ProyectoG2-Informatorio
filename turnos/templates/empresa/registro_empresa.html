@@ -3,8 +3,8 @@
 {% block contenido %}
             <h1>HOLA, CREAR EMPRESA</h1>
 
-            <form action="" method="post">{% csrf_token %}
+            <form action="" method="post" enctype="multipart/form-data">{% csrf_token %}
                 {{form.as_p}}
-                <input type="submit" value='Crear empresa'>
+                <input type="submit" value='Registrar local'>
             </form>
 {% endblock %}

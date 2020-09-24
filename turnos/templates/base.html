@@ -40,14 +40,18 @@
 								{{user.username}}
 							</a>
 							<div class="dropdown-menu">
-								<a class="dropdown-item" href="{% url 'usuarios:modificar' user.DNI %}">Modificar Cliente (Vista solo de Cliente)</a>
-								<a class="dropdown-item" href="{% url 'autoevaluacion:crearFuncion'%}">Autoevaluacion (Vista solo de Cliente)</a>
-								<a class="dropdown-item" href="{% url 'autoevaluacion:listar' %}">Resultado Autoevaluación (Vista solo de Cliente)</a>
-								<a class="dropdown-item" href="{% url 'turnos:solicitar' %}">Solicitar turno (Vista solo de Cliente)</a>
-								<a class="dropdown-item" href="{% url 'empresa:registrar' %}">Registrar empresa (Vista solo de Dueños)</a>
-								<a class="dropdown-item" href="{% url 'empresa:listarDuenio' %}">Listar empresas (Vista solo de Dueños)</a>
-								<a class="dropdown-item" href="{% url 'empresa:listarTurnos' %}">Listar turnos (Vista solo de Dueños)</a>
-								<a class="dropdown-item" href="{% url 'empresa:listar' %}">Listar empresas (Vista de Turnos)</a>
+								{% if user.es_duenio == 0 %}
+									<a class="dropdown-item" href="{% url 'usuarios:modificar' user.DNI %}">Modificar Cliente</a>
+									<a class="dropdown-item" href="{% url 'autoevaluacion:crearFuncion'%}">Autoevaluacion</a>
+									<a class="dropdown-item" href="{% url 'autoevaluacion:listar' %}">Resultado Autoevaluación</a>
+									<a class="dropdown-item" href="{% url 'empresa:listar' %}">Listar empresas</a>
+								{% else %}
+									<a class="dropdown-item" href="{% url 'empresa:registrar' %}">Registrar empresa</a>
+									<a class="dropdown-item" href="{% url 'empresa:listar' %}">Listar empresas</a>
+									<a class="dropdown-item" href="{% url 'empresa:listarTurnos' %}">Listar turnos</a>
+									
+								{% endif %}
+								
 								<form action="{% url 'logout' %}">
 									<button type="submit" class="btn btn-light btn-sm">Salir</button>
 								</form>
