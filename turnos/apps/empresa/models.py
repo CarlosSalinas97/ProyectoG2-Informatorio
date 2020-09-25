@@ -33,5 +33,4 @@ class Empresa(models.Model):
 	Cant_empleados = models.BigIntegerField()
 	Rubro = models.ForeignKey(Rubro, related_name = "rubro_empresa", on_delete = models.CASCADE)
 
-	def __str__(self):
-		return self.Nombre
+	

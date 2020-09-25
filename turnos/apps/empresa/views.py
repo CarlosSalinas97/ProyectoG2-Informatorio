@@ -13,6 +13,7 @@ from .forms import EmpresaForm, EmpresaModificar
 from apps.turnos.models import Turnos
 from apps.utils.funciones import PermisosMixin
 
+
 #TRABAJAR CON PERMISOS DE TIPOS DE USUARIO 
 class Modificar(LoginRequiredMixin, PermisosMixin, UpdateView):
 	rol = 'duenio'
@@ -21,10 +22,12 @@ class Modificar(LoginRequiredMixin, PermisosMixin, UpdateView):
 	template_name = 'empresa/modificar.html'
 	success_url = reverse_lazy('empresa:listarDuenio')
 
+
 class Eliminar(LoginRequiredMixin, PermisosMixin, DeleteView):
 	rol = 'duenio'
 	model = Empresa
 	success_url = reverse_lazy('empresa:listarDuenio')
+
 
 @login_required
 def RegistrarEmpresa(request):

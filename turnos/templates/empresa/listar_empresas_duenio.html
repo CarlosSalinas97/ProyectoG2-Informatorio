@@ -9,8 +9,8 @@
 				{% for r in rubros %}
 					<button name="filtro" type="submit" value="{{r.id}}">{{r.nombre}}</button>
 				{% endfor %}
+			
 			</form>
-
 			<h1>Empresas</h1>
 			{% for p in empresas %}
 				{% if user == p.DNI %}
@@ -32,12 +32,11 @@
 					{% else %}
 						<p>NO TENGO IMAGEN</p>
 					{% endif %}
-					<p><b>Ver turnos solicitados: <a class="dropdown-item" href="{% url 'turnos:listar' %}">Ver turnos</a></p> <!-- VERIFICAR -->
+					<p><b>Ver turnos solicitados: </b><a class="dropdown-item" href="{% url 'turnos:listar' p.CUIT%}">Ver turnos</a></p> <!-- VERIFICAR -->
 					<p><b>Modificar: </b><a class="dropdown-item" href="{% url 'empresa:modificar' p.CUIT%}">MODIFICAR</a></p>
 					<p><b>Eliminar: </b><a class="dropdown-item" href="{% url 'empresa:eliminar' p.CUIT%}">ELIMINAR</a></p>
-				{% else %}
-					<p>No tiene locales registrados</p>
 				{% endif %}
 			{% endfor %}
+			
 
 {% endblock %}

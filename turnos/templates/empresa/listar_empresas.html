@@ -2,35 +2,62 @@
 
 {% block contenido %}
 
-        <h1>SOY TODAS LAS EMRPESAS</h1>
+        <div class="container justify-content-center">
+            <h1 class="text-center">Solicitar Turno</h1>
+        </div>
+        
 
-            <h1>Filtros</h1>
-                <form action="" method="get">
+        <form action="" method="get" class="">
+            <nav class="navbar navbar-expand-sm bg-none navbar-none justify-content-center">
+                <ul class="navbar-nav">
                     {% for r in rubros %}
-                        <button name="filtro" type="submit" value="{{r.id}}">{{r.nombre}}</button>
+                        <li class="nav-item active btn-group btn-group-lg">
+                            <button name="filtro" type="submit" class="btn btn-light bg-light rounded-0 pl-4 pr-4" value="{{r.id}}">{{r.nombre}}</button>
+                        </li>
                     {% endfor %}
-                </form>
+                </ul>
+            </nav>
+        </form>
+        <br>
+        <br>
+        <div class="container">
+            {% for p in empresas %}
+            <div class="container d-flex flex-row border border-dark rounded" style="height: 200px; display: inline;">
+                <div class="container col-2 rounded align-middle">
+                    {% if p.Imagen %}
+					    <img class="" src="{{p.Imagen.url}}" width="150" height="150">
+				    {% else %}
+					    <p>NO TENGO IMAGEN</p>
+                    {% endif %}
+                </div>
+                
+                <div class="container col-4 align-middle">
+                    <h2 class="mt-2">{{p.Nombre}}</h2>
+                    <span><b>Direccion: </b>{{p.Direccion}}</span>
+                    <br>
+                    <span><b>Horarios:</b> 
+                    {% if p.HorarioPrimeroAbre%}
+					    {{p.HorarioPrimeroAbre}} a {{p.HorarioPrimeroCierra}}
+				    {% endif %}
+                    {% if p.HorarioSegundoAbre %}
+                        {% if p.HorarioPrimeroAbre and p.HorarioSegundoAbre%}
+                            |
+                        {% endif %}
+					    {{p.HorarioSegundoAbre}} a {{p.HorarioSegundoCierra}}
+                    {% endif %}
+                    </span>
+                    <br>
+                    <span><b>Telefono: </b>{{p.Telefono}}</span>
+                </div>
 
-            <h1>Empresas</h1>
-			{% for p in empresas %}
-				<p><b>Nombre: </b>{{p.Nombre}}</p>
-				<p><b>Direccion: </b>{{p.Direccion}}</p>
-                <p><b>Telefono: </b>{{p.Telefono}}</p>
-                <p><b>Pagina: </b>{{p.PaginaWeb}}</p>
-				<p><b>Email: </b>{{p.Email}}</p>
-				{% if p.HorarioPrimeroAbre%}
-					<p>Por la mañana: {{p.HorarioPrimeroAbre}} a {{p.HorarioPrimeroCierra}}</p>
-				{% endif %}
-				{% if p.HorarioSegundoAbre%}
-					<p>Por la tarde: {{p.HorarioSegundoAbre}} a {{p.HorarioSegundoCierra}}</p>
-				{% endif %}
-                {% if p.Imagen %}
-                    <p><b>Imagen: </b></p>
-					<img src="{{p.Imagen.url}}" width="200" height="200">
-				{% else %}
-					<p>NO TENGO IMAGEN</p>
-                {% endif %}
-                <p><a class="dropdown-item" href="{% url 'turnos:solicitar' p.CUIT%}">Ver turnos disponibles</a></p>
-			{% endfor %}
+                <div class="container col-6 justify-content-center mx-auto align-middle">
+                    <a class="rounded bg-danger pl-3 pr-3 pt-2 pb-2" href="{% url 'turnos:solicitar' p.CUIT%}">Ver turnos disponibles</a>
+                </div>
 
+                <!-- <p><b>Pagina: </b>{{p.PaginaWeb}}</p>
+				<p><b>Email: </b>{{p.Email}}</p> -->
+            </div>
+            <br>
+            {% endfor %}
+        </div>
 {% endblock %}

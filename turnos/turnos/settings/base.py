@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'apps.turnos',
     'apps.usuarios',
     'crispy_forms',
+    'jquery',
     
 ]
 

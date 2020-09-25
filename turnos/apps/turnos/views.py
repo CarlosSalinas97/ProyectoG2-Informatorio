@@ -13,7 +13,7 @@ from .forms import AltaTurno
 from apps.utils.funciones import PermisosMixin
 from apps.empresa.models import Empresa
 
-class SolicitarTurno(LoginRequiredMixin, PermisosMixin, CreateView):
+class SolicitarTurno2(LoginRequiredMixin, PermisosMixin, CreateView):
 	rol = 'cliente'
 	model = Turnos
 	form_class = AltaTurno
@@ -22,30 +22,24 @@ class SolicitarTurno(LoginRequiredMixin, PermisosMixin, CreateView):
 
 
 @login_required
-def ListarTurnos(request):
+def ListarTurnos(request, pk):
 	context = {}
-	todos = Turnos.objects.all()
+	todos = Turnos.objects.filter(id_local = pk)
 	context['turnos'] = todos
-	print(todos)
-
 	return render(request,'turnos/listarTurnos.html',context)
 
+
 @login_required
-def CrearEvaluacion(request, pk):
+def SolicitarTurno(request, pk):
 	if request.method == 'POST':
 		form = AltaTurno(request.POST)
 		if form.is_valid():
 			x = form.save(commit=False)
 			x.DNI = request.user
-			
-			#x.id_local = Empresa.objects.filter(CUIT = pk)
+			x.id_local = Empresa.objects.get(CUIT = pk)
 			x.save()
 			return HttpResponseRedirect('/')
 	else:
 		form = AltaTurno()
-		context = {}
-		empresas = Empresa.objects.all()
-		context['empresas'] = empresas
-		print(context)
 
 	return render(request, 'turnos/solicitarTurno.html',{'form': form})
