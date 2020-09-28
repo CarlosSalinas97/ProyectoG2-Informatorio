@@ -7,6 +7,7 @@ from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
+from datetime import date
 
 from .models import Turnos
 from .forms import AltaTurno
@@ -35,10 +36,20 @@ def ListarTurnosClientes(request):
 
 @login_required
 def SolicitarTurno(request, pk):
-	#print('--------------------------------------')
-	#print(Autoevaluaciones(request.user).objects.all)
-	#print('--------------------------------------')
-	#if not Autoevaluaciones.Verificacion(request.user.DNI):
+	print('--------------------------------------')
+	a = Autoevaluaciones.objects.get(usuario_test = request.user.DNI)
+	print(a.resultado)
+	print(a.fecha_test)
+	print(date.today())
+	resta = str((date.today())-(a.fecha_test))
+	if resta == '7 days, 0:00:00':
+		print('Anduvo')
+	else:
+		print('error')
+		
+	print('--------------------------------------')
+	#Comparar que el resultado sea False y la fecha no sea superior a 7 días de haberse realizado
+	#Si supera los 7 días, eliminar la autoevaluacion y redireccionarle para que la realice de nuevo
 	if request.method == 'POST':
 		form = AltaTurno(request.POST)
 		if form.is_valid():
