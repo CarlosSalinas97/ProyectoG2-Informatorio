@@ -12,13 +12,8 @@ from .models import Turnos
 from .forms import AltaTurno
 from apps.utils.funciones import PermisosMixin
 from apps.empresa.models import Empresa
-
-class SolicitarTurno2(LoginRequiredMixin, PermisosMixin, CreateView):
-	rol = 'cliente'
-	model = Turnos
-	form_class = AltaTurno
-	template_name = 'turnos/solicitarTurno.html'
-	success_url = reverse_lazy('home')
+from apps.autoevaluacion.models import Autoevaluaciones
+from apps.autoevaluacion.forms import AutoevaluacionForm
 
 
 @login_required
@@ -30,7 +25,20 @@ def ListarTurnos(request, pk):
 
 
 @login_required
+def ListarTurnosClientes(request):
+	usuario = request.user
+	context = {}
+	todos = Turnos.objects.filter(DNI = usuario)
+	context['turnos'] = todos
+	return render(request,'turnos/listarTurnos.html',context)
+
+
+@login_required
 def SolicitarTurno(request, pk):
+	#print('--------------------------------------')
+	#print(Autoevaluaciones(request.user).objects.all)
+	#print('--------------------------------------')
+	#if not Autoevaluaciones.Verificacion(request.user.DNI):
 	if request.method == 'POST':
 		form = AltaTurno(request.POST)
 		if form.is_valid():

@@ -14,6 +14,7 @@ from apps.turnos.models import Turnos
 from apps.utils.funciones import PermisosMixin
 
 
+
 #TRABAJAR CON PERMISOS DE TIPOS DE USUARIO 
 class Modificar(LoginRequiredMixin, PermisosMixin, UpdateView):
 	rol = 'duenio'
@@ -67,9 +68,13 @@ def Filtros(request):
 #Solo disponible para usuario con rol de Dueño
 @login_required
 def ListarTurnos(request):
+	usuario = request.user
 	context = {}
 	todos = Turnos.objects.all()
 	context['turnos'] = todos
 	print(todos)
 
-	return render(request,'turnos/listarTurnos.html',context)
+	if usuario.es_duenio:
+		return render(request,'turnos/listarTurnos.html',context)
+	else:
+		return render(request,'turnos/listarTurnos.html',context)

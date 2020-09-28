@@ -30,7 +30,6 @@ def CrearEvaluacion(request):
 			x = form.save(commit=False)
 			x.usuario_test = request.user
 			x.fecha_test = datetime.datetime.now()
-
 			x.resultado_covid()
 			x.save()
 			return HttpResponseRedirect('/')
@@ -38,3 +37,5 @@ def CrearEvaluacion(request):
 		form = AutoevaluacionForm()
 
 	return render(request, 'autoevaluacion/testFuncion.html',{'form': form})
+
+	

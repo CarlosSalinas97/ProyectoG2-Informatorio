@@ -7,6 +7,3 @@ class AutoevaluacionForm(forms.ModelForm):
 		model = Autoevaluaciones
 		fields = '__all__'
 		exclude = ['resultado','usuario_test','fecha_test']
-		widgets = {
-			'usuario_test': forms.TextInput(attrs={'required': False, 'maxlength': "8"}),
-		}

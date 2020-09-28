@@ -11,8 +11,9 @@
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<script src="https://kit.fontawesome.com/28abe86f4b.js" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 	<!-- Calendario -->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css" integrity="sha256-DOS9W6NR+NFe1fUhEE0PGKY/fubbUCnOfTje2JMDw3Y=" crossorigin="anonymous" />
 </head>
 <body>
 
@@ -46,10 +47,11 @@
 									<a class="dropdown-item" href="{% url 'autoevaluacion:crearFuncion'%}">Autoevaluacion</a>
 									<a class="dropdown-item" href="{% url 'autoevaluacion:listar' %}">Resultado Autoevaluación</a>
 									<a class="dropdown-item" href="{% url 'empresa:listar' %}">Sacar turno</a>
+									<a class="dropdown-item" href="{% url 'turnos:listarTurnosClientes' %}">Listar turnos del cliente</a>
 								{% else %}
 									<a class="dropdown-item" href="{% url 'empresa:registrar' %}">Registrar empresa</a>
 									<a class="dropdown-item" href="{% url 'empresa:listar' %}">Listar empresas</a>
-									<a class="dropdown-item" href="{% url 'empresa:listarTurnos' %}">Listar todos los turnos (Vista a borrar)</a>
+									
 									
 								{% endif %}
 								
@@ -74,10 +76,6 @@
 		{% block contenido %}
 
 		{% endblock %}
-		{% block scripts_local %}
-
-  		{% endblock scripts_local %}  
 	</div>
-	<script src="{% static 'js/calendario.js' %}"></script>
 </body>
 </html>

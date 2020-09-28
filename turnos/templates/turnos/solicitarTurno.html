@@ -1,11 +1,53 @@
 {% extends 'base.html' %}
 
 {% block contenido %}
+    {{ form.media }}
             <h1>HOLA, SOY SOLICITAR TURNOS</h1>
 
             <form action="" method="post" enctype="multipart/form-data">{% csrf_token %}
-                {{form.as_p}}
+                <p>
+                    <label for="id_dia">Dia:</label>
+                    <div class="input-group" id="div_id_dia" data-target-input="nearest" style="width: 200px;">
+                        <input type="text" name="dia" autocomplete="off" required="True" id="id_dia" class="form-control  datetimepicker-input" data-toggle="datetimepicker" data-target="#id_dia">
+                          <div class="input-group-append" data-target="#id_dia" data-toggle="datetimepicker">
+                              <div class="input-group-text"><i class="fa fa-calendar" aria-hidden="true"></i></div>
+                          </div>
+                    </div>
+                </p>
+                <script type="text/javascript">
+                    function deferDateTimePicker_id_dia() {
+                        if (window.jQuery && $.fn.datetimepicker) {
+                            $('#id_dia').datetimepicker({"format": "YYYY-MM-DD", "icons": {"time": "fa fa-clock-o"}, "useCurrent": true, "collapse": false});
+                        } else {
+                            setTimeout(function() { deferDateTimePicker_id_dia() }, 50);
+                        }
+                    }
+                    deferDateTimePicker_id_dia();
+                </script>
+
+                <p><label for="id_horario">Horario:</label> <select name="horario" required="" id="id_horario">
+                    <option value="" selected="">---------</option>
+                    <option value="1">8 a 10</option>
+                    <option value="2">10 a 13</option>
+                    <option value="3">17 a 20</option>
+                    <option value="4">20 a 00</option>
+                  </select></p>
+
+                <p>
+                    <label for="id_invitado1">Invitado1:</label>
+                    <input type="text" name="invitado1" maxlength="8" autocomplete="off" id="id_invitado1">
+                </p>
+
+                <p>
+                    <label for="id_invitado2">Invitado2:</label> 
+                    <input type="text" name="invitado2" maxlength="8" autocomplete="off" id="id_invitado2">
+                </p>
+
+                <p>
+                    <label for="id_invitado3">Invitado3:</label> 
+                    <input type="text" name="invitado3" maxlength="8" autocomplete="off" id="id_invitado3">
+                </p>
+                
                 <input type="submit" value='Crear'>
             </form>
-            
 {% endblock %}

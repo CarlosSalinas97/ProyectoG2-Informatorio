@@ -50,6 +50,8 @@ INSTALLED_APPS = [
     'apps.usuarios',
     'crispy_forms',
     'jquery',
+    'tempus_dominus',
+    'django_filters',
     
 ]
 

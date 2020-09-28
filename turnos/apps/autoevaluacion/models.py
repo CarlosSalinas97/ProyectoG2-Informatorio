@@ -31,3 +31,11 @@ class Autoevaluaciones(models.Model):
 			self.resultado = "True"
 		else:
 			self.resultado = "False"
+
+	def Verificacion(self):
+		if self.resultado == 'True':
+			print('Positivo')
+			return True
+		else:
+			print('Negativo')
+			return False
