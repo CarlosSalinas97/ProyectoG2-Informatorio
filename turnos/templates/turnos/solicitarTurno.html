@@ -2,71 +2,80 @@
 
 {% block contenido %}
     {{ form.media }}
-            <h1>HOLA, SOY SOLICITAR TURNOS</h1>
+        <script src="/static/js/botonesSolicitarTurno.js"></script>
+        
+        <div class="container justify-content-center">
+            <h1 class="text-center text-light pt-3 font-weight-bold">Solicitar Turno</h1>
+        </div>
 
+        <div class="container bg-white d-flex justify-content-center align-items-center">
             <form action="" method="post" enctype="multipart/form-data">{% csrf_token %}
-                <label for="id_dia">Dia:</label>
-                <div class="input-group" id="div_id_dia" data-target-input="nearest" style="width: 200px;">
-                    <input type="text" name="dia" autocomplete="off" required="True" id="id_dia" class="form-control  datetimepicker-input" data-toggle="datetimepicker" data-target="#id_dia">
-                        <div class="input-group-append" data-target="#id_dia" data-toggle="datetimepicker">
-                            <div class="input-group-text"><i class="fa fa-calendar" aria-hidden="true"></i></div>
-                        </div>
+            <div class="row pt-5" style="height: 100px;">
+                    <div class="col-6" style="width: 300px;">
+                        <p>
+                            <label for="id_dia">Dia:</label>
+                            <div class="input-group" id="div_id_dia" data-target-input="nearest" style="width: 200px;">
+                                <input type="text" name="dia" autocomplete="off" required="True" id="id_dia" class="form-control  datetimepicker-input" data-toggle="datetimepicker" data-target="#id_dia">
+                                    <div class="input-group-append" data-target="#id_dia" data-toggle="datetimepicker">
+                                        <div class="input-group-text"><i class="fa fa-calendar" aria-hidden="true"></i></div>
+                                    </div>
+                            </div>
+                            
+                            <script type="text/javascript">
+                                function deferDateTimePicker_id_dia() {
+                                    if (window.jQuery && $.fn.datetimepicker) {
+                                        $('#id_dia').datetimepicker({"format": "YYYY-MM-DD", "icons": {"time": "fa fa-clock-o"}, "useCurrent": true, "collapse": false});
+                                    } else {
+                                        setTimeout(function() { deferDateTimePicker_id_dia() }, 50);
+                                    }
+                                }
+                                deferDateTimePicker_id_dia();
+                            </script>
+                        </p>
+                    </div>
+                    <div class="col-6" style="width: 100px;">
+                        <p><label for="id_horario">Horario:</label> <select name="horario" required id="id_horario">
+                            <option value="" selected=""></option>
+                            <option value="1">8 a 10</option>
+                            <option value="2">10 a 13</option>
+                            <option value="3">17 a 20</option>
+                            <option value="4">20 a 00</option>
+                          </select>
+                        </p>
+                    </div>
+            </div>
+            <div class="row pt-5">
+                <div class="col-12">
+                    {% if empresa.Rubro_id == 3 %}
+                    <span>¿Desea invitar a más personas? (Max. 3 personas).
+                        Ingrese solo el DNI.
+                    </span>
+                        <p>
+                            <label for="id_invitado1">Invitado:</label>
+                            <input type="text" name="invitado1" maxlength="8" autocomplete="off" id="id_invitado1" disabled>
+                            <button type="button" class="btn btn-success" id="+1" onclick="mostrar1()">+</button>
+                            <button type="button" class="btn btn-danger" id="-1" onclick="esconder1()" style="display:none;">-</button>
+                        </p>
+
+                        <p>
+                            <label for="id_invitado2">Invitado:</label> 
+                            <input type="text" name="invitado2" maxlength="8" autocomplete="off" id="id_invitado2" disabled>
+                            <button type="button" class="btn btn-success" id="+2" onclick="mostrar2()" style="display:none;">+</button>
+                            <button type="button" class="btn btn-danger" id="-2" onclick="esconder2()" style="display:none;">-</button>
+                        </p>
+
+                        <p>
+                            <label for="id_invitado3">Invitado:</label> 
+                            <input type="text" name="invitado3" maxlength="8" autocomplete="off" id="id_invitado3" disabled>
+                            <button type="button" class="btn btn-success" id="+3" onclick="mostrar3()" style="display:none;">+</button>
+                            <button type="button" class="btn btn-danger" id="-3" onclick="esconder3()" style="display:none;">-</button>
+                        </p>
+                    {% endif %}
                 </div>
-                
-                <script type="text/javascript">
-                    function deferDateTimePicker_id_dia() {
-                        if (window.jQuery && $.fn.datetimepicker) {
-                            $('#id_dia').datetimepicker({"format": "YYYY-MM-DD", "icons": {"time": "fa fa-clock-o"}, "useCurrent": true, "collapse": false});
-                        } else {
-                            setTimeout(function() { deferDateTimePicker_id_dia() }, 50);
-                        }
-                    }
-                    deferDateTimePicker_id_dia();
-                </script>
-                <br>
-
-                <p><label for="id_horario">Horario:</label> <select name="horario" required="" id="id_horario">
-                    <option value="" selected="">---------</option>
-                    <option value="1">8 a 10</option>
-                    <option value="2">10 a 13</option>
-                    <option value="3">17 a 20</option>
-                    <option value="4">20 a 00</option>
-                  </select>
-                </p>
-                <button type="button" id="botonMostrar" onclick="mostrar()">¿Desea invitar a más personas? (Max. 3 personas)</button>
-                    <p>
-                        <label for="id_invitado1">Invitado:</label>
-                        <input type="text" name="invitado1" maxlength="8" autocomplete="off" id="id_invitado1" disabled>
-                    </p>
-
-                    <p>
-                        <label for="id_invitado2">Invitado:</label> 
-                        <input type="text" name="invitado2" maxlength="8" autocomplete="off" id="id_invitado2" disabled>
-                    </p>
-
-                    <p>
-                        <label for="id_invitado3">Invitado:</label> 
-                        <input type="text" name="invitado3" maxlength="8" autocomplete="off" id="id_invitado3" disabled>
-                    </p>
-
-                
-
-                <input type="submit" value='Crear'>
+            </div> 
+            <button type="submit" class="btn btn-info" value='Crear'>Solicitar turno</button>
             </form>
-            <script>
-                function mostrar(){
-                    if (document.getElementById("id_invitado1").disabled == false){
-                        document.getElementById("id_invitado1").disabled = true
-                        document.getElementById("id_invitado2").disabled = true
-                        document.getElementById("id_invitado3").disabled = true
-                        document.getElementById("botonMostrar").textContent = "¿Desea invitar a más personas? (Max. 3 personas)"
-                    }else{
-                        document.getElementById("id_invitado1").disabled = false
-                        document.getElementById("id_invitado2").disabled = false
-                        document.getElementById("id_invitado3").disabled = false
-                        document.getElementById("botonMostrar").textContent = "Cancelar invitación"
-                    }
-                }
-                
-            </script>
+            <br>
+            <br>
+        </div>
 {% endblock %}

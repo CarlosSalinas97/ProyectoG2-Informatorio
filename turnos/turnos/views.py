@@ -19,3 +19,6 @@ def contacto(request):
 		formulario = FormularioContacto()
 
 	return render(request,'contacto.html',{'form': formulario})
+
+def nosotros(request):
+	return render(request,'nosotros.html')

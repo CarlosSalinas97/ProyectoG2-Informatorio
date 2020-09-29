@@ -17,7 +17,7 @@ class Razon_Social(models.Model):
 
 class Empresa(models.Model):
 	CUIT = models.BigIntegerField(primary_key = True, serialize = False, verbose_name = 'CUIT')
-	DNI = models.OneToOneField(Usuario, related_name = "empresa_usuario", on_delete = models.CASCADE)
+	DNI = models.ForeignKey(Usuario, related_name = "empresa_usuario", on_delete = models.CASCADE)
 	Nombre = models.CharField(max_length = 50)
 	Razon_Social = models.ForeignKey(Razon_Social, related_name = "razon_social", on_delete = models.CASCADE)
 	Direccion = models.CharField(max_length = 80)

@@ -18,6 +18,7 @@ class Autoevaluaciones(models.Model):
 	usuario_test = models.ForeignKey(Usuario, null=True, related_name = 'usuario_test', on_delete = models.SET_NULL)
 	resultado = models.CharField(max_length=10)
 	fecha_test = models.DateField()
+	fecha_testPositivo = models.DateField(null=True, blank=True)
 
 	
 	def resultado_covid(self):
