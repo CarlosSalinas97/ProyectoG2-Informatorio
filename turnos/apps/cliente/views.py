@@ -9,4 +9,4 @@ class RegistroCliente(CreateView):
 	model = Usuario
 	form_class = ClienteForm
 	template_name = 'cliente/registro_cliente.html'
-	success_url = reverse_lazy('home')
+	success_url = reverse_lazy('autoevaluacion:crearFuncion')

@@ -1,79 +1,89 @@
 {% extends 'base.html' %}
 
 {% block contenido %}
-		<div class="container justify-content-center">
-			<h1 class="text-center text-light pt-3 font-weight-bold">Locales registrados</h1>
+<div class="container justify-content-center">
+	<h1 class="text-center text-light pt-3 font-weight-bold">Locales registrados</h1>
+</div>
+
+
+<form action="" method="get" class="">
+	<nav class="navbar navbar-expand-sm bg-none navbar-none justify-content-center pt-4 ">
+		<ul class="navbar-nav">
+			{% for r in rubros %}
+			{% if forloop.first %}
+			<li class="nav-item active btn-group btn-group-lg">
+				<button name="filtro" type="submit"
+					class="btn btn-light bg-light pl-4 pr-4 border text-uppercase font-weight-bold" value="{{r.id}}"
+					style="border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 0px; border-bottom-right-radius: 0px;">{{r.nombre}}</button>
+			</li>
+			{% elif forloop.last %}
+			<li class="nav-item active btn-group btn-group-lg">
+				<button name="filtro" type="submit"
+					class="btn btn-light bg-light pl-4 pr-4 border text-uppercase font-weight-bold" value="{{r.id}}"
+					style="border-top-left-radius: 0px; border-bottom-left-radius: 0px; border-top-right-radius: 20px; border-bottom-right-radius: 20px;">{{r.nombre}}</button>
+			</li>
+			{% else %}
+			<li class="nav-item active btn-group btn-group-lg">
+				<button name="filtro" type="submit"
+					class="btn btn-light bg-light rounded-0 pl-4 pr-4 border text-uppercase font-weight-bold"
+					value="{{r.id}}">{{r.nombre}}</button>
+			</li>
+			{% endif %}
+			{% endfor %}
+		</ul>
+	</nav>
+</form>
+<br>
+<br>
+<div class="container bg-white p-5 rounded" style="width: 85%;">
+	{% for p in empresas %}
+	<div class="container d-flex flex-row border border-dark rounded" style="height: 200px; display: inline;">
+		<div class="container col-2 rounded d-flex align-items-center mr-4">
+			{% if p.Imagen %}
+			<img src="{{p.Imagen.url}}" width="150" height="150">
+			{% else %}
+			<img src="/media/logo_1.jpg" width="150" height="150">
+			{% endif %}
 		</div>
-			
-	
-			<form action="" method="get" class="">
-				<nav class="navbar navbar-expand-sm bg-none navbar-none justify-content-center pt-4 ">
-					<ul class="navbar-nav">
-						{% for r in rubros %}
-							{% if forloop.first %}
-								<li class="nav-item active btn-group btn-group-lg">
-									<button name="filtro" type="submit" class="btn btn-light bg-light pl-4 pr-4 border text-uppercase font-weight-bold" value="{{r.id}}" style="border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 0px; border-bottom-right-radius: 0px;">{{r.nombre}}</button>
-								</li>
-							{% elif forloop.last %}
-								<li class="nav-item active btn-group btn-group-lg">
-									<button name="filtro" type="submit" class="btn btn-light bg-light pl-4 pr-4 border text-uppercase font-weight-bold" value="{{r.id}}"  style="border-top-left-radius: 0px; border-bottom-left-radius: 0px; border-top-right-radius: 20px; border-bottom-right-radius: 20px;">{{r.nombre}}</button>
-								</li>
-							{% else %}
-								<li class="nav-item active btn-group btn-group-lg">
-									<button name="filtro" type="submit" class="btn btn-light bg-light rounded-0 pl-4 pr-4 border text-uppercase font-weight-bold" value="{{r.id}}">{{r.nombre}}</button>
-								</li>
-							{% endif %}
-						{% endfor %}
-					</ul>
-				</nav>
+
+		<div class="container col-4 align-middle">
+			<h2 class="mt-4">{{p.Nombre}}</h2>
+			<span><b>Direccion: </b>{{p.Direccion}}</span>
+			<br>
+			<span><b>Horarios:</b>
+				{% if p.HorarioPrimeroAbre%}
+				{{p.HorarioPrimeroAbre}} a {{p.HorarioPrimeroCierra}}
+				{% endif %}
+				{% if p.HorarioSegundoAbre %}
+				{% if p.HorarioPrimeroAbre and p.HorarioSegundoAbre%}
+				|
+				{% endif %}
+				{{p.HorarioSegundoAbre}} a {{p.HorarioSegundoCierra}}
+				{% endif %}
+			</span>
+			<br>
+			<span><b>Telefono: </b>{{p.Telefono}}</span>
+		</div>
+
+		<div class="container col-6 justify-content-center mx-auto d-flex align-items-center" style="font-size: 18px;">
+			<a class="bg-success pl-3 pr-3 pt-2 pb-2 mr-2" href="{% url 'turnos:listar' p.CUIT%}"
+				style="border-radius: 50px;">Ver turnos</a>
+			<a class="bg-primary pl-3 pr-3 pt-2 pb-2 mr-2" href="{% url 'empresa:modificar' p.CUIT%}"
+				style="border-radius: 50px;">Modificar</a>
+			<form method="POST" action="{% url 'empresa:eliminar' p.CUIT%}">{% csrf_token %}
+				<button type="submit" class="bg-danger pl-3 pr-3 pt-2 pb-2 border-0 text-white font-weight-bold mr-2"
+					style="border-radius: 50px;">Eliminar</button>
 			</form>
-			<br>
-			<br>
-			<div class="container bg-white p-5 rounded" style="width: 85%;">
-				{% for p in empresas %}
-				<div class="container d-flex flex-row border border-dark rounded" style="height: 200px; display: inline;">
-					<div class="container col-2 rounded d-flex align-items-center mr-4">
-						{% if p.Imagen %}
-							<img src="{{p.Imagen.url}}" width="150" height="150">
-						{% else %}
-							<img src="/media/logo_1.jpg" width="150" height="150">
-						{% endif %}
-					</div>
-					
-					<div class="container col-4 align-middle">
-						<h2 class="mt-4">{{p.Nombre}}</h2>
-						<span><b>Direccion: </b>{{p.Direccion}}</span>
-						<br>
-						<span><b>Horarios:</b> 
-						{% if p.HorarioPrimeroAbre%}
-							{{p.HorarioPrimeroAbre}} a {{p.HorarioPrimeroCierra}}
-						{% endif %}
-						{% if p.HorarioSegundoAbre %}
-							{% if p.HorarioPrimeroAbre and p.HorarioSegundoAbre%}
-								|
-							{% endif %}
-							{{p.HorarioSegundoAbre}} a {{p.HorarioSegundoCierra}}
-						{% endif %}
-						</span>
-						<br>
-						<span><b>Telefono: </b>{{p.Telefono}}</span>
-					</div>
-	
-					<div class="container col-6 justify-content-center mx-auto d-flex align-items-center" style="font-size: 18px;">
-						<a class="bg-success pl-3 pr-3 pt-2 pb-2 mr-2" href="{% url 'turnos:listar' p.CUIT%}" style="border-radius: 50px;">Ver turnos</a>
-						<a class="bg-primary pl-3 pr-3 pt-2 pb-2 mr-2" href="{% url 'empresa:modificar' p.CUIT%}" style="border-radius: 50px;">Modificar</a>
-						<form method="POST" action="{% url 'empresa:eliminar' p.CUIT%}">{% csrf_token %}
-							<button type="submit" class="bg-danger pl-3 pr-3 pt-2 pb-2 border-0 text-white font-weight-bold mr-2" style="border-radius: 50px;">Eliminar</button>
-						</form>
-					</div>
-				</div>
-				<br>
-				{% endfor %}
-				<div class="container d-flex justify-content-center mx-auto d-flex align-items-center mt-3">
-					<a class="bg-info pl-3 pr-3 pt-2 pb-2 mr-2" href="{% url 'empresa:registrar' %}" style="border-radius: 50px; font-size: 20px;">+ Registrar un nuevo local</a>
-				</div>
-				
-			</div>
-			
+		</div>
+	</div>
+	<br>
+	{% endfor %}
+	<div class="container d-flex justify-content-center mx-auto d-flex align-items-center mt-3">
+		<a class="bg-info pl-3 pr-3 pt-2 pb-2 mr-2" href="{% url 'empresa:registrar' %}"
+			style="border-radius: 50px; font-size: 20px;">+ Registrar un nuevo local</a>
+	</div>
+
+</div>
+
 
 {% endblock %}

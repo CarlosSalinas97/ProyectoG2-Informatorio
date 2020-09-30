@@ -3,14 +3,14 @@
 
 
 {% block contenido %}
-			<h1>¡Autoevaluación!</h1>
-			{{form.errors}}
-			<form method="POST" enctype="multipart/form-data">{% csrf_token %}
-					{{ form.as_p }}
-					<p>{{form.usuario_test}}</p>
-					<input type="submit" value="Autoevaluar">
-			</form>			
-			<script>
+<h1>¡Autoevaluación!</h1>
+{{form.errors}}
+<form method="POST" enctype="multipart/form-data">{% csrf_token %}
+	{{ form.as_p }}
+	<p>{{form.usuario_test}}</p>
+	<input type="submit" value="Autoevaluar">
+</form>
+<script>
 
-			</script>
+</script>
 {% endblock%}

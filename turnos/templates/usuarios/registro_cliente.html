@@ -3,12 +3,12 @@
 
 
 {% block contenido %}
-			<h1>¡Registrarse acá!</h1>
-			{{form.errors}}
-			<form method="POST" enctype="multipart/form-data">{% csrf_token %}
-					{{ form|crispy }}
-					
-					<input type="submit" value="Crear">
-			</form>			
+<h1>¡Registrarse acá!</h1>
+{{form.errors}}
+<form method="POST" enctype="multipart/form-data">{% csrf_token %}
+	{{ form|crispy }}
+
+	<input type="submit" value="Crear">
+</form>
 
 {% endblock%}
