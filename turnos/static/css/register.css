@@ -1,0 +1,41 @@
+#titulo{
+	text-align: center; margin-top: 27px;
+	font-family: Poppins;
+	font-style: normal;
+	font-size: 45px;
+	color: 	rgb(255, 255, 255);
+	text-shadow: -1px -1px 1px #000;
+}
+
+#boton{
+	background: #FF5D5D; 
+	border-radius: 5px;
+	border-color: #FF5D5D;
+	margin-top: 27px;
+	margin-left: 33.33%;
+}
+
+
+
+.campos{
+	margin-top: 10px;
+	margin-left: 10%;
+
+	font-weight: 800;
+	font-family: Poppins;
+	font-style: normal;
+	font-size: 20px;
+
+
+	color: #000000;
+
+
+}
+
+.input{
+	margin-top: 10px;
+	float: right;
+	margin-right: 10%
+
+}
+
