@@ -1,10 +1,162 @@
 {% extends 'base.html' %}
 
 {% block contenido %}
-            <h1>HOLA, CREAR EMPRESA</h1>
+        {{form.errors}}
+            <div class="container justify-content-center">
+                <h1 class="text-center text-light pt-3 font-weight-bold">Registrar local</h1>
+            </div>
 
-            <form action="" method="post" enctype="multipart/form-data">{% csrf_token %}
-                {{form.as_p}}
-                <input type="submit" value='Registrar local'>
-            </form>
+            <div class="container bg-white d-flex justify-content-center mt-5 align-middle  align-items-center" style="width: 75%; border-radius: 25px;">
+                <form action="" method="post" enctype="multipart/form-data" style="width: 90%">{% csrf_token %}
+                    <div class="form-group row mt-5">
+                        <div class="form-group col-4 text-right font-weight-bold">
+                            <label for="id_CUIT" class="col-form-label">CUIT:</label>
+                        </div>
+                        <div class="form-group col-8">
+                            <input type="number" class="form-control" id="id_CUIT" placeholder="CUIT" name="CUIT" min="0" max="99999999999" maxlength="11" required="">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="form-group col-4 text-right font-weight-bold">
+                            <label for="id_Nombre" class="col-form-label">Nombre:</label>
+                        </div>
+                        <div class="form-group col-8">
+                            <input type="text" class="form-control" id="id_Nombre" placeholder="Nombre local" name="Nombre" maxlength="50" required="">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="form-group col-4 text-right font-weight-bold">
+                            <label for="id_Razon_Social" class="col-form-label">Razon Social:</label>
+                        </div>
+                        <div class="form-group col-8">
+                            <select name="Razon_Social" required="" id="id_Razon_Social">
+                                <option value="" selected=""></option>
+                                <option value="1">SA</option>
+                                <option value="2">SRL</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="form-group col-4 text-right font-weight-bold">
+                            <label for="id_Direccion" class="col-form-label">Dirección:</label>
+                        </div>
+                        <div class="form-group col-8">
+                            <input type="text" class="form-control" id="id_Direccion" placeholder="Dirección" name="Direccion" maxlength="80" required="">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="form-group col-4 text-right font-weight-bold">
+                            <label for="id_Telefono" class="col-form-label">Teléfono:</label>
+                        </div>
+                        <div class="form-group col-8">
+                            <input type="number" class="form-control" id="id_Telefono" placeholder="Teléfono" name="Telefono" min="0" max="9223372036854775807">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="form-group col-4 text-right font-weight-bold">
+                            <label for="id_PaginaWeb" class="col-form-label">Pagina web:</label>
+                        </div>
+                        <div class="form-group col-8">
+                            <input type="text" class="form-control" id="id_PaginaWeb" placeholder="ejemplo.com" name="PaginaWeb" maxlength="150">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="form-group col-4 text-right font-weight-bold">
+                            <label for="id_Email" class="col-form-label">Correo electrónico:</label>
+                        </div>
+                        <div class="form-group col-8">
+                            <input type="email" class="form-control" id="id_Email" placeholder="Correo electrónico" name="Email" maxlength="50">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="form-group col-4 text-right font-weight-bold">
+                            <label for="id_HorarioPrimeroAbre" class="col-form-label">Horario de apertura AM:</label>
+                        </div>
+                        <div class="form-group col-8">
+                            <input type="text" class="form-control" id="id_HorarioPrimeroAbre" name="HorarioPrimeroAbre" maxlength="2">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="form-group col-4 text-right font-weight-bold">
+                            <label for="id_HorarioPrimeroCierra" class="col-form-label">Horario de cierre AM:</label>
+                        </div>
+                        <div class="form-group col-8">
+                            <input type="text" class="form-control" id="id_HorarioPrimeroCierra" name="HorarioPrimeroCierra" maxlength="2">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="form-group col-4 text-right font-weight-bold">
+                            <label for="id_HorarioSegundoAbre" class="col-form-label">Horario de apertura PM:</label>
+                        </div>
+                        <div class="form-group col-8">
+                            <input type="text" class="form-control" id="id_HorarioSegundoAbre" name="HorarioSegundoAbre" maxlength="2">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="form-group col-4 text-right font-weight-bold">
+                            <label for="id_HorarioSegundoCierra" class="col-form-label">Horario de cierre PM:</label>
+                        </div>
+                        <div class="form-group col-8">
+                            <input type="text" class="form-control" id="id_HorarioSegundoCierra" name="HorarioSegundoCierra" maxlength="2">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="form-group col-4 text-right font-weight-bold">
+                            <label for="id_Imagen" class="col-form-label">Imagen:</label>
+                        </div>
+                        <div class="form-group col-8">
+                            <input type="file" name="Imagen" accept="image/*" id="id_Imagen">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="form-group col-4 text-right font-weight-bold">
+                            <label for="id_Superficie" class="col-form-label">Superficie:</label>
+                        </div>
+                        <div class="form-group col-8">
+                            <input type="number" class="form-control" id="id_Superficie" name="Superficie" min="0" max="9223372036854775807" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group row">
+                        <div class="form-group col-4 text-right font-weight-bold">
+                            <label for="id_Cant_empleados" class="col-form-label">Cantidad de empleados:</label>
+                        </div>
+                        <div class="form-group col-8">
+                            <input type="number" class="form-control" id="id_Cant_empleados" name="Cant_empleados" min="0" max="9223372036854775807" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="form-group col-4 text-right font-weight-bold">
+                            <label for="id_Rubro" class="col-form-label">Rubro:</label>
+                        </div>
+                        <div class="form-group col-8">
+                            <select name="Rubro" required="" id="id_Rubro">
+                                <option value="" selected=""></option>
+                                <option value="1">Peluqueria</option>
+                                <option value="2">Indumentaria</option>
+                                <option value="3">Restaurante</option>
+                                <option value="4">Bar</option>
+                                <option value="5">Gimnasio</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="container d-flex justify-content-center mx-auto d-flex align-items-center mt-3">
+                        <input type="submit" value="Registrar local" class="bg-danger pl-3 pr-3 pt-2 pb-2 border-0 text-white font-weight-bold mr-2" style="border-radius: 50px;">
+                    </div>
+                </form>
+            </div>
 {% endblock %}

@@ -21,19 +21,23 @@ class Modificar(LoginRequiredMixin, PermisosMixin, UpdateView):
 	model = Empresa
 	form_class = EmpresaModificar
 	template_name = 'empresa/modificar.html'
-	success_url = reverse_lazy('empresa:listarDuenio')
+	success_url = reverse_lazy('empresa:listar')
 
 
 class Eliminar(LoginRequiredMixin, PermisosMixin, DeleteView):
 	rol = 'duenio'
 	model = Empresa
-	success_url = reverse_lazy('empresa:listarDuenio')
+	success_url = reverse_lazy('empresa:listar')
 
 
 @login_required
 def RegistrarEmpresa(request):
 	if request.method == 'POST':
-		form = EmpresaForm(request.POST)
+		form = EmpresaForm(request.POST, request.FILES)
+		form.is_valid()
+		print('------------------------------------------')
+		print(form.errors)
+		print('------------------------------------------')
 		if form.is_valid():
 			x = form.save(commit=False)
 			x.DNI = request.user
@@ -41,6 +45,7 @@ def RegistrarEmpresa(request):
 			return HttpResponseRedirect('/')
 	else:
 		form = EmpresaForm()
+		
 
 	return render(request, 'empresa/registro_empresa.html',{'form': form})
 
