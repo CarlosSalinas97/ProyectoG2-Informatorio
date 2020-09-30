@@ -13,7 +13,6 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 	<script src="https://kit.fontawesome.com/28abe86f4b.js" crossorigin="anonymous"></script>
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-	<!-- Calendario -->
 </head>
 <body>
 
@@ -46,33 +45,30 @@
 									<a class="dropdown-item" href="{% url 'usuarios:modificar' user.DNI %}">Modificar Cliente</a>
 									<a class="dropdown-item" href="{% url 'autoevaluacion:crearFuncion'%}">Autoevaluacion</a>
 									<a class="dropdown-item" href="{% url 'autoevaluacion:listar' %}">Resultado Autoevaluación</a>
-									<a class="dropdown-item" href="{% url 'empresa:listar' %}">Sacar turno</a>
-									<a class="dropdown-item" href="{% url 'turnos:listarTurnosClientes' %}">Listar turnos del cliente</a>
-								{% else %}
-									<a class="dropdown-item" href="{% url 'empresa:registrar' %}">Registrar empresa</a>
-									<a class="dropdown-item" href="{% url 'empresa:listar' %}">Listar empresas</a>
-									
-									
 								{% endif %}
 								
 								<form action="{% url 'logout' %}">
-									<button type="submit" class="btn btn-light btn-sm">Salir</button>
+									<button type="submit" class="btn btn-light btn-sm align-self-center text-center">Cerrar sesión</button>
 								</form>
 							</div>
 						</li>
 					</ul>
 				</nav>
 				{% else %}
-					<a href="{% url 'login' %}">Login</a>
-					<a href="{% url 'cliente:registrar_cliente' %}">Registrarse</a>
-					<a href="{% url 'duenio:registrar_duenio' %}">Registrar Dueño</a>
+					<nav class="navbar navbar-expand-sm">
+						<ul class="navbar-nav" style="font-size: 18px;">
+							<li class="nav-item dropdown">
+								<a class="nav-link bg-light text-dark pl-3 pr-3" href="#" id="navbardrop" data-toggle="dropdown" style="border-radius: 20px;">Invitado</a>
+							</li>
+						</ul>
+					</nav>
 				{% endif %}
 			</div>
 		</div>
 	</div>
 
 	<!-- Bloques -->
-	<div class="container mt-5 pt-4">
+	<div class="container-fluid mt-5 pt-4">
 		{% block contenido %}
 
 		{% endblock %}

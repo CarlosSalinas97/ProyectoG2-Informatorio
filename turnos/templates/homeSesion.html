@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+	<div class="container-fluid">
+		<div class="container d-flex flex-column align-items-center justify-content-center pt-5">
+			<h1 class="text-center text-white font-weight-bold" style="font-size: 50px;">Turnos INCOV</h1>
+			<br>
+			<h4 class="text-center">Una plataforma que optimiza tu tiempo y el cuidado de tus clientes, proveyendo un fuerte sistema de gestión de turnos que cuida por sobre todo la experiencia de usuario.</h4>
+		</div>
+		
+		<div class="container d-flex flex-column pt-5" style="height:400px;">
+			<div class="row">
+				<div class="col-6 m-0 p-0">
+					<img src="/media/imagen_tiempo.png" class="img-fluid w-100" alt="" srcset="" style="mix-blend-mode: luminosity; opacity: 0.8; z-index: -1; position: absolute; height: 300px;">
+					<a href="{% url 'turnos:listarTurnosClientes' %}" class="btn btn-danger btn-lg font-weight-bold position-absolute" style="top: 200px; left: 380px; border-radius: 25px;">Ver turnos</a>
+				</div>
+				<div class="col-6 m-0 p-0">
+					<img src="/media/imagen_plan.png" class="img-fluid w-100" alt="" srcset="" style="mix-blend-mode: luminosity; opacity: 0.8; z-index:-1; position: absolute; height: 300px;">
+					<a href="{% url 'empresa:listar' %}" class="btn btn-light btn-lg font-weight-bold position-absolute" style="top: 200px; left: 20px; border-radius: 25px;">Solicitar turno</a>
+
+				</div>
+			</div>
+		</div>
+		
+
+		<div class="container d-flex flex-column align-items-center justify-content-center pt-5">
+			<h2 class="text-center text-white font-weight-bold" style="font-size: 36px;">FUNCIONAMIENTO Y SERVICIOS</h2>
+		</div>
+
+		<div class="container-fluid pt-5">
+			<div class="center-block">
+				<div class="row">
+					<div class="col align-self-center text-center">
+						<img src="/media/Indumentaria.png" alt="" srcset="" style="height: 150px; width: 150px;">
+						<h3 class="text-center text-white mt-2">INDUMENTARIA</h3>
+					</div>
+					<div class="col align-self-center text-center">
+						<img src="/media/Peluquerias.png" alt="" srcset="" style="height: 150px; width: 150px;">
+						<h3 class="text-center text-white mt-2">PELUQUERIAS</h3>
+					</div>
+					<div class="col align-self-center text-center">
+						<img src="/media/Restaurante.png" alt="" srcset="" style="height: 150px; width: 150px;">
+						<h3 class="text-center text-white mt-2">RESTAURANTES</h3>
+					</div>
+					<div class="col align-self-center text-center">
+						<img src="/media/Bares.png" alt="" srcset="" style="height: 150px; width: 150px;">
+						<h3 class="text-center text-white mt-2">BARES</h3>
+					</div>
+					<div class="col align-self-center text-center">
+						<img src="/media/Gimnasio.png" alt="" srcset="" style="height: 150px; width: 150px;">
+						<h3 class="text-center text-white mt-2">GIMNASIOS</h3>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+
+		<div class="container d-flex flex-column align-items-center justify-content-center pt-5 mb-5 mt-5">
+			<div class="row">
+				<h4>El cliente entra a la web y puede tomar su turno en menos de 3 minutos.</h4>
+			</div>
+			<div class="row mt-5">
+				<div class="col"><img src="/media/persona 1.png" alt="" srcset=""></div>
+				<div class="col"><img src="/media/flechanegra 2.png" alt="" srcset=""></div>
+				<div class="col"><img src="/media/Calendario.png" alt="" srcset=""></div>
+				<div class="col"><img src="/media/flechanegra 2.png" alt="" srcset=""></div>
+				<div class="col"><img src="/media/mujer 1.png" alt="" srcset=""></div>
+			</div>
+		</div>	
+	</div>
+
+{% endblock %}

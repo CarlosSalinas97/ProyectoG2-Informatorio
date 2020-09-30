@@ -1,30 +1,142 @@
-{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Turnos</title>
+		<!-- Boostrap -->
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+		<!-- Styles CSS -->
+		{% load static %}
+		<link rel="stylesheet" href="{% static 'css/base.css' %}">
+		<!-- Scripts -->
+		  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+		<script src="https://kit.fontawesome.com/28abe86f4b.js" crossorigin="anonymous"></script>
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+</head>
+<body>
+	<!-- NAVBAR -->
+	<div class="container-fluid bg-light fixed-top border-white" style="border-style: none none solid none;">
+		<div class="header row">
+			<div class="col-4 d-flex justify-content-center">
+				<a class="navbar-brand mt-2" href="{% url 'home' %}">DJANGO - INFO</a>
+			</div>
+			
+			<div class="col-4 d-flex justify-content-center">
+				<nav class="navbar navbar-expand-sm">
+					<ul class="navbar-nav" style="font-size: 20px;">
+						<li class="nav-item pl-5 pr-5"><a href="{% url 'nosotros' %}">Nosotros</a></li>
+						<li class="nav-item pl-5 pr-5"><a href="{% url 'contacto' %}">Contacto</a>
+					</ul>
+				</nav>
+			</div>
+			<div class="col-4 d-flex justify-content-center">
+				<nav class="navbar navbar-expand-sm">
+					<ul class="navbar-nav" style="font-size: 18px;">
+						<li class="nav-item dropdown">
+							<a class="nav-link bg-light text-dark pl-3 pr-3" href="#" id="navbardrop" data-toggle="dropdown" style="border-radius: 20px;">
+								Invitado
+							</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+	</div>
 
-{% block contenido %}
-	<div class="container-fluid">
-		<h1>Turnos INCOV</h1>
-		<H3>Una plataforma que optimiza tu tiempo y el cuidado de tus clientes, proveyendo un fuerte sistema de</H3>
-		<h3>gestión de turnos que cuida por sobre todo la experiencia de usuario.</h3>
-		<img src="/media/imagen_tiempo.png" class="img-fluid" alt="" srcset="">
-		<img src="/media/imagen_plan.png" class="img-fluid" alt="" srcset="">
-		<h2>FUNCIONAMIENTO Y SERVICIOS</h2>
-		<img src="/media/Indumentaria.png" alt="" srcset="">
-		<h3>INDUMENTARIA</h3>
-		<img src="/media/Peluquerias.png" alt="" srcset="">
-		<h3>PELUQUERIAS</h3>
-		<img src="/media/Restaurante.png" alt="" srcset="">
-		<h3>RESTAURANTES</h3>
-		<img src="/media/Bares.png" alt="" srcset="">
-		<h3>BARES</h3>
-		<img src="/media/Gimnasio.png" alt="" srcset="">
-		<h3>GIMNASIOS</h3>
-		<h4>
-			El cliente entra a la web y puede tomar su turno en menos de 3 minutos.
-		</h4>
-		<img src="/media/persona 1.png" alt="" srcset="">
-		<img src="/media/flechanegra 2.png" alt="" srcset="">
-		<img src="/media/Calendario.png" alt="" srcset="">
-		<img src="/media/flechanegra 2.png" alt="" srcset="">
-		<img src="/media/mujer 1.png" alt="" srcset="">
-	</div>	
-{% endblock %}
+
+	<div class="container-fluid mt-5">
+		<div class="container d-flex flex-column align-items-center justify-content-center pt-5">
+			<h1 class="text-center text-white font-weight-bold" style="font-size: 50px;">Turnos INCOV</h1>
+			<br>
+			<h4 class="text-center">Una plataforma que optimiza tu tiempo y el cuidado de tus clientes, proveyendo un fuerte sistema de gestión de turnos que cuida por sobre todo la experiencia de usuario.</h4>
+		</div>
+		
+		<div class="container d-flex flex-column pt-5" style="height:400px;">
+			<div class="row">
+				<div class="col-6 m-0 p-0">
+					<img src="/media/imagen_tiempo.png" class="img-fluid w-100" alt="" srcset="" style="mix-blend-mode: luminosity; opacity: 0.8; z-index: -1; position: absolute; height: 300px;">
+					<!-- <a href="" class="btn btn-danger btn-lg font-weight-bold position-absolute" style="top: 200px; left: 380px; border-radius: 25px;">Registrarse</a> -->
+					<button type="button" class="btn btn-danger btn-lg font-weight-bold position-absolute" data-toggle="modal" data-target="#ModalRegistro" style="top: 200px; left: 380px; border-radius: 25px;">
+						Registrarse
+					</button>
+				</div>
+				<div class="col-6 m-0 p-0">
+					<img src="/media/imagen_plan.png" class="img-fluid w-100" alt="" srcset="" style="mix-blend-mode: luminosity; opacity: 0.8; z-index:-1; position: absolute; height: 300px;">
+					<a href="{% url 'login' %}" class="btn btn-light btn-lg font-weight-bold position-absolute" style="top: 200px; left: 20px; border-radius: 25px;">Iniciar sesión</a>
+				</div>
+			</div>
+		</div>
+
+		<!-- Modal Registro -->
+		<div class="modal fade" id="ModalRegistro" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">¿Que tipo de usuario desea registrarse?</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				</div>
+				<div class="modal-body d-flex flex-column align-items-center justify-content-center">
+					<div class="row mt-1">
+						<a href="{% url 'cliente:registrar_cliente' %}" class="btn btn-danger btn-lg font-weight-bold align-self-center text-center" style="top: 200px; left: 20px; border-radius: 25px;">Registrarse como Cliente</a>
+					</div>
+					<div class="row mt-3 mb-2">
+						<a href="{% url 'duenio:registrar_duenio' %}" class="btn btn-danger btn-lg font-weight-bold align-self-center text-center" style="top: 200px; left: 20px; border-radius: 25px;">Registrarse como Dueño</a>
+					</div>
+				</div>
+			</div>
+			</div>
+		</div>
+		
+
+		<div class="container d-flex flex-column align-items-center justify-content-center pt-5">
+			<h2 class="text-center text-white font-weight-bold" style="font-size: 36px;">FUNCIONAMIENTO Y SERVICIOS</h2>
+		</div>
+
+		<div class="container-fluid pt-5">
+			<div class="center-block">
+				<div class="row">
+					<div class="col align-self-center text-center">
+						<img src="/media/Indumentaria.png" alt="" srcset="" style="height: 150px; width: 150px;">
+						<h3 class="text-center text-white mt-2">INDUMENTARIA</h3>
+					</div>
+					<div class="col align-self-center text-center">
+						<img src="/media/Peluquerias.png" alt="" srcset="" style="height: 150px; width: 150px;">
+						<h3 class="text-center text-white mt-2">PELUQUERIAS</h3>
+					</div>
+					<div class="col align-self-center text-center">
+						<img src="/media/Restaurante.png" alt="" srcset="" style="height: 150px; width: 150px;">
+						<h3 class="text-center text-white mt-2">RESTAURANTES</h3>
+					</div>
+					<div class="col align-self-center text-center">
+						<img src="/media/Bares.png" alt="" srcset="" style="height: 150px; width: 150px;">
+						<h3 class="text-center text-white mt-2">BARES</h3>
+					</div>
+					<div class="col align-self-center text-center">
+						<img src="/media/Gimnasio.png" alt="" srcset="" style="height: 150px; width: 150px;">
+						<h3 class="text-center text-white mt-2">GIMNASIOS</h3>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+
+		<div class="container d-flex flex-column align-items-center justify-content-center pt-5 mb-5 mt-5">
+			<div class="row">
+				<h4>El cliente entra a la web y puede tomar su turno en menos de 3 minutos.</h4>
+			</div>
+			<div class="row mt-5">
+				<div class="col"><img src="/media/persona 1.png" alt="" srcset=""></div>
+				<div class="col"><img src="/media/flechanegra 2.png" alt="" srcset=""></div>
+				<div class="col"><img src="/media/Calendario.png" alt="" srcset=""></div>
+				<div class="col"><img src="/media/flechanegra 2.png" alt="" srcset=""></div>
+				<div class="col"><img src="/media/mujer 1.png" alt="" srcset=""></div>
+			</div>
+		</div>	
+	</div>
+</body>
+</html>	

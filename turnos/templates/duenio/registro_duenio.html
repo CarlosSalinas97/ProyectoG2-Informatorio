@@ -4,59 +4,109 @@
 
 
 {% block contenido %}
-	<link rel="stylesheet" type="text/css" href="{% static 'css/register.css' %}">
+			{{form.errors}}
+            <div class="container justify-content-center">
+                <h1 class="text-center text-light pt-3 font-weight-bold">Registrarse como dueño</h1>
+            </div>
 
-		<h2 id="titulo"><strong>Registro de Dueño</strong></h2>
-			<div class="row justify-content-center" style="margin-top: 37px">
-			    <div class="col-9">
-			      <div class="card">
-			        <div class="card-body">
-			          {{form.errors}}
-			          <form method="POST" enctype="multipart/form-data" id="form">
-			            {% csrf_token %}
-			            <div>
-			            <label class="campos">Nombre de Usuario</label><div class="input">{{ form.username }}</div>
-			        	</div>
+            <div class="container bg-white d-flex justify-content-center mt-5 align-middle  align-items-center" style="width: 75%; border-radius: 25px;">
+                <form action="" method="post" enctype="multipart/form-data" style="width: 90%">{% csrf_token %}
+                    <div class="form-group row mt-5">
+                        <div class="form-group col-4 text-right font-weight-bold">
+                            <label for="id_username" class="col-form-label"><span class="asteriskField">*</span>Nombre de usuario:</label>
+                        </div>
+                        <div class="form-group col-8">
+                            <input type="text" name="username" maxlength="20" class="textinput textInput form-control" required="" id="id_username"> 
+							<div id="hint_id_username" class="help-block">Obligatorio. Longitud máxima de 20 caracteres. Solo puede estar formado por letras, números y los caracteres @/./+/-/_.</div>
+                        </div>
+					</div>
 
-			           <div>
-			            <label class="campos">Email</label><div class="input">{{ form.email }}</div>
-			        	</div>
+                    <div class="form-group row">
+                        <div class="form-group col-4 text-right font-weight-bold">
+                            <label for="id_email" class="col-form-label"><span class="asteriskField">*</span>Correo electrónico:</label>
+                        </div>
+                        <div class="form-group col-8">
+                            <input type="email" name="email" maxlength="254" autofocus="" class="emailinput form-control" required="" id="id_email">
+                        </div>
+					</div>
 
-			        	<div>
-			            <label class="campos">DNI</label><div class="input">{{ form.DNI}}</div>
-			        	</div>
+                    <div class="form-group row">
+                        <div class="form-group col-4 text-right font-weight-bold">
+                            <label for="id_first_name" class="col-form-label">Nombre:</label>
+                        </div>
+                        <div class="form-group col-8">
+                            <input type="text" name="first_name" maxlength="30" class="textinput textInput form-control" id="id_first_name">
+                        </div>
+					</div>
 
-			        	<div>
-			            <label class="campos">CUIL</label><div class="input">{{ form.CUIL}}</div>
-			        	</div>
+                    <div class="form-group row">
+                        <div class="form-group col-4 text-right font-weight-bold">
+                            <label for="div_id_last_name" class="col-form-label">Apellido:</label>
+                        </div>
+                        <div class="form-group col-8">
+                            <input type="text" name="last_name" maxlength="150" class="textinput textInput form-control" id="id_last_name">
+                        </div>
+					</div>
 
-			        	
+                    <div class="form-group row">
+                        <div class="form-group col-4 text-right font-weight-bold">
+                            <label for="id_password1" class="col-form-label"><span class="asteriskField">*</span>Contraseña:</label>
+                        </div>
+                        <div class="form-group col-8">
+                            <input type="password" name="password1" autocomplete="new-password" class="textinput textInput form-control" required="" id="id_password1"> 
+							<div id="hint_id_password1" class="help-block">
+								<ul>
+									<li>Su contraseña no puede ser similar a otros componentes de su información personal.</li>
+									<li>Su contraseña debe contener por lo menos 8 caracteres.</li>
+									<li>Su contraseña no puede ser una contraseña usada muy comúnmente.</li>
+									<li>Su contraseña no puede estar formada exclusivamente por números.</li>
+								</ul>
+							</div> 
+                        </div>
+					</div>
 
-			             <div>
-			            <label class="campos">Nombre</label><div class="input">{{ form.first_name }}</div>
-			        	</div>
+                    <div class="form-group row">
+                        <div class="form-group col-4 text-right font-weight-bold">
+                            <label for="id_password2" class="col-form-label"><span class="asteriskField">*</span>Confirmación de contraseña:</label>
+                        </div>
+                        <div class="form-group col-8">
+                            <input type="password" name="password2" autocomplete="new-password" class="textinput textInput form-control" required="" id="id_password2"> 
+							<div id="hint_id_password2" class="help-block">Introduzca la misma contraseña nuevamente, para poder verificar la misma.</div> 
+                        </div>
+					</div>
 
-			        	<div>
-			            <label class="campos">Apellido</label><div class="input">{{ form.last_name }}</div>
-			        	</div>
+                    <div class="form-group row">
+                        <div class="form-group col-4 text-right font-weight-bold">
+                            <label for="id_DNI" class="col-form-label"><span class="asteriskField">*</span>DNI:</label>
+                        </div>
+                        <div class="form-group col-8">
+                            <input type="number" name="DNI" min="0" class="numberinput form-control" required="" id="id_DNI">
+                        </div>
+					</div>
 
-			        	<div>
-			            <label class="campos">Contraseña</label><div class="input">{{ form.password1 }}</div>
-			        	</div>
+                    <div class="form-group row">
+                        <div class="form-group col-4 text-right font-weight-bold">
+                            <label for="id_fecha_nacimiento" class="col-form-label"><span class="asteriskField">*</span>Fecha de Nacimiento(DD/MM/AAAA):</label>
+                        </div>
+                        <div class="form-group col-8">
+                            <input type="text" name="fecha_nacimiento" class="dateinput form-control" required="" id="id_fecha_nacimiento">
+                        </div>
+					</div>
 
-			        	<div>
-			            <label class="campos">Confirmación de Contraseña</label><div class="input">{{ form.password2 }}</div>
-			        	</div>
+                    <div class="form-group row">
+                        <div class="form-group col-4 text-right font-weight-bold">
+                            <label for="id_CUIL" class="col-form-label"><span class="asteriskField">*</span>CUIL:</label>
+                        </div>
+                        <div class="form-group col-8">
+                            <input type="number" name="CUIL" class="numberinput form-control" required="" id="id_CUIL">
+                        </div>
+					</div>
 
-			        	<div>
-			            <label class="campos">Fecha de nacimiento(DD/MM/AAAA)</label><div class="input">{{ form.fecha_nacimiento}}</div>
-			        	</div>
+                    <div class="container d-flex justify-content-center mx-auto d-flex align-items-center mt-3">
+                        <input type="submit" value="Registrarse" class="bg-danger pl-3 pr-3 pt-2 pb-2 border-0 text-white font-weight-bold mr-2" style="border-radius: 50px;">
+                    </div>
+                </form>
+            </div>
 
-			            <button type="submit" class="btn btn-primary col-4" id="boton"><strong>Registrar</strong></button>
-			          </form>
-			        </div>
-			      </div>
-			    </div>
-			  </div>
 
 {% endblock%}

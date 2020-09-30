@@ -1,19 +1,42 @@
 {% extends 'base.html' %}
 
 {% block contenido %}
-            <h1>HOLA, SOY LISTAR TURNOS</h1>
-            
-            {% for p in turnos %}
-            <p><b>idTurno: </b>{{p.id_turno}}</p>
-            <p><b>DNI: </b>{{p.DNI}}</p>
-            <p><b>id_local: </b>{{p.id_local}}</p> <!-- Eliminar este campo -->
-            <p><b>dia: </b>{{p.dia}}</p>
-            <p><b>invitado1: </b>{{p.invitado1}}</p>
-            <p><b>invitado2: </b>{{p.invitado2}}</p>
-            <p><b>invitado3: </b>{{p.invitado3}}</p>
-            <p>___________________________________________________________________</p>
-            {% endfor %}
-
+    <div class="container justify-content-center">
+        <h1 class="text-center text-light pt-3 font-weight-bold">Turnos solicitados</h1>
+    </div>
+        
+    <div class="container bg-white p-3 rounded mt-5" style="width: 700px;">
+        {% for p in turnos %}
+        <div class="container border border-dark rounded mb-4">
+            <div class="row pt-2">
+                <div class="col-6">
+                    <p><b>Nro de turno: </b>{{p.id_turno}}</p>
+                    <p><b>DNI del solicitante: </b>{{p.DNI.DNI}}</p>
+                    <p><b>Local: </b>{{p.id_local.Nombre}}</p> <!-- Eliminar este campo -->
+                    <p><b>Día: </b>{{p.dia}}</p>
+                    <p><b>Horario: </b>
+                        {% if p.horario == '1' %} 8 a 10hs
+                        {% elif p.horario == '2' %} 10 a 13hs
+                        {% elif p.horario == '3' %} 17 a 20hs
+                        {% else %} 20 a 00hs
+                        {% endif %}
+                    </p>
+                </div>
+                <div class="col-6">
+                    {% if p.invitado1 %}
+                        <p><b>DNI de aquellas personas que usted ha invitado en su turno:</b></p>
+                        <p><b>Invitado: </b>{{p.invitado1.DNI}}</p>
+                    {% endif %}
+                    {% if p.invitado2 %}
+                        <p><b>Invitado: </b>{{p.invitado2.DNI}}</p>
+                    {% endif %}
+                    {% if p.invitado3 %}
+                        <p><b>Invitado: </b>{{p.invitado3.DNI}}</p>
+                    {% endif %}
+                </div>
+            </div> 
+        </div>
+        {% endfor %}
 {% endblock %}
 
 

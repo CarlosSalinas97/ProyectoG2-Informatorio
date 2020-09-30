@@ -3,7 +3,13 @@ from .forms import FormularioContacto
 from django.core.mail import send_mail
 
 def Home(request):
-	return render(request,'home.html')
+	if (request.user.is_anonymous):
+		return render(request,'home.html')
+	else:
+		if (request.user.es_duenio):
+			return render(request,'homeSesionDuenio.html')
+		else:
+			return render(request,'homeSesion.html')
 
 def contacto(request):
 	if request.method == 'POST':
