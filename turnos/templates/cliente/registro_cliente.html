@@ -1,14 +1,57 @@
 {% extends 'base.html' %}
-{% load crispy_forms_tags %}
+
+{% load static %}
+
 
 
 {% block contenido %}
-			<h1>¡Registrarse acá!</h1>
-			{{form.errors}}
-			<form method="POST" enctype="multipart/form-data">{% csrf_token %}
-					{{ form|crispy }}
-					
-					<input type="submit" value="Crear">
-			</form>			
+	<link rel="stylesheet" type="text/css" href="{% static 'css/register.css' %}">
+
+		<h2 id="titulo"><strong>Registro de Clientes</strong></h2>
+			<div class="row justify-content-center" style="margin-top: 37px">
+			    <div class="col-9">
+			      <div class="card">
+			        <div class="card-body">
+			          {{form.errors}}
+			          <form method="POST" enctype="multipart/form-data" id="form">
+			            {% csrf_token %}
+			            <div>
+			            <label class="campos">Nombre de Usuario</label><div class="input">{{ form.username }}</div>
+			        	</div>
+
+			           <div>
+			            <label class="campos">Email</label><div class="input">{{ form.email }}</div>
+			        	</div>
+
+			        	<div>
+			            <label class="campos">DNI</label><div class="input">{{ form.DNI}}</div>
+			        	</div>
+
+			             <div>
+			            <label class="campos">Nombre</label><div class="input">{{ form.first_name }}</div>
+			        	</div>
+
+			        	<div>
+			            <label class="campos">Apellido</label><div class="input">{{ form.last_name }}</div>
+			        	</div>
+
+			        	<div>
+			            <label class="campos">Contraseña</label><div class="input">{{ form.password1 }}</div>
+			        	</div>
+
+			        	<div>
+			            <label class="campos">Confirmación de Contraseña</label><div class="input">{{ form.password2 }}</div>
+			        	</div>
+
+			        	<div>
+			            <label class="campos">Fecha de nacimiento(DD/MM/AAAA)</label><div class="input">{{ form.fecha_nacimiento}}</div>
+			        	</div>
+
+			            <button type="submit" class="btn btn-primary col-4" id="boton"><strong>Registrar</strong></button>
+			          </form>
+			        </div>
+			      </div>
+			    </div>
+			  </div>
 
 {% endblock%}

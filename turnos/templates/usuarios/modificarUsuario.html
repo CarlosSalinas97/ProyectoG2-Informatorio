@@ -1,16 +1,56 @@
 {% extends 'base.html' %}
 
-{% load crispy_forms_tags %}
-
 {% block contenido %}
 
 
-			<h1>FORMULARIO PARA MODIFICAR los datos del cliente!</h1>	
-			{{form.errors}}
+<section class="container">
+	
+	<div class="row mt - justify-content-center">
+		<h1 class= "nuevaLetra mb-5 mt-5 justify-content-center text-white font-weight-bolder text-uppercase" >Modificar datos cliente</h1>	
+		{{form.errors}}
+		<div class="col-10 bg-white p-5">
+			
 			<form method="POST">{% csrf_token %}
-					{{ form|crispy }}
-					<input type="submit" value="MODIFICAR">
-			</form>
+				<div id="div_id_first_name" class="form-group row"> 
 
+					<label for="id_first_name" class="col-sm-4 col-form-label"><strong>Nombre</strong></label> 
+					<div class="col-sm-4"> 
+						<input type="text" name="first_name" value="" maxlength="30" class="form-control bg-light text-dark" id="id_first_name" placeholder="Introduzca un nuevo nombre"> 
+					</div> 
+				</div>
+
+				<div id="div_id_last_name" class="form-group row"> 
+					<label for="id_last_name" class="col-sm-4 col-form-label"><strong>Apellido</strong></label> 
+					<div class="col-sm-4">
+						<input type="text" name="last_name" value="" maxlength="150" class="form-control bg-light text-dark" id="id_last_name"placeholder="Introduzca un nuevo apellido"> 
+					</div> 
+				</div>
+
+				<div id="div_id_email" class="form-group row"> 
+					<label for="id_email" class="col-sm-4 col-form-label"><strong>Correo Electrónico</strong><span class="asteriskField">*</span></label> 
+					<div class="col-sm-4"> 
+						<input type="email" name="email" value="" maxlength="254" class="form-control bg-light text-dark" required="" id="id_email" placeholder="Nuevo correo electrónico"> 
+					</div> 
+				</div>
+				<div id="div_id_fecha_nacimiento" class="form-group row"> 
+					<label for="id_fecha_nacimiento" class="col-sm-4 col-form-label">
+						<strong>Fecha de Nacimiento(DD/MM/AAAA)</strong><span class="asteriskField">*</span></label> 
+			    	<div class="col-sm-4 "> 
+			    		<input type="text" name="fecha_nacimiento" value="" class="form-control bg-light text-dark" required="" id="id_fecha_nacimiento" placeholder="Nueva fecha de nacimiento"> 
+			    	</div> 
+			    </div>
+
+
+			<div class="div.col align-self-center text-center">
+				
+				<button type="submit" class="btn btn-danger btn-sm font-weight-bold align-self-center text-center" style="border-radius: 40px;">Enviar</button>
+				
+			</div>
+
+				
+			</form>
+		</div>
+	</div>
+</section>
 
 {% endblock %}

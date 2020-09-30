@@ -2,116 +2,212 @@
 
 {% block contenido %}
 
-			<h1> Resultado de tu autotest</h1>
+<div class="container">
+
+	<h1 class="text-center justify-content-center p-3 text-white"> <strong>Resultado Autotest</strong> </h1>		
+
+	<div class="row mt-2">
+
+		<div class="col-12 bg-white">
+	
+			<br>
 
 			{% for p in object_list %}
+			
+			<h3 style="background-color: #77c9e2" class="text-center p-5 text-white">Respuestas brindadas fecha: <strong> {{p.fecha_test}} </strong></h3>
+			<table class="table border-3 border-top-3 border-bottom-5 table-secondary">
+			  <thead>
+			    <tr>
 
-				<p> Fecha de realización del test:  <strong> {{p.fecha_test}} </strong> </p>
+			    	<th scope="col">#</th>
+			      	<th scope="col">Síntoma</th>
+			      	<th scope="col">Resultado</th>
 
-				<p> Los resultados del test son los siguientes: </p>
+			    </tr>
 
-				{% if p.fiebre %}
-    
-					<p>Presenta como síntoma fiebre: positivo. </p>
-					    
-					{% else %}
-					        
-					<p>Presenta como síntoma fiebre: negativo. </p>
+			  </thead>
 
-					{% endif %}
+				 <tbody>
+	    			<tr>
+				    <th scope="row">1</th>
 
-				{% if p.tos %}
-    
-					<p>Presenta como síntoma tos: positivo. </p>
-					    
-					{% else %}
-					        
-					<p>Presenta como síntoma tos: negativo. </p>
+				    <td>Fiebre</td>
 
-					{% endif %}
+					{% if p.fiebre %}
+		    
+						<td>Positivo </td>
+						    
+						{% else %}
+						        
+						<td>Negativo </td>
 
-				{% if p.diarrea %}
-    
-					<p>Presenta como síntoma diarrea: positivo. </p>
-					    
-					{% else %}
-					        
-					<p>Presenta como síntoma diarrea: negativo. </p>
+						{% endif %}
 
-					{% endif %}
+				    </tr>
+				    <tr>
 
-				{% if p.dolor_garganta %}
-    
-					<p>Presenta como síntoma dolor de garganta: positivo. </p>
-					    
-					{% else %}
-					        
-					<p>Presenta como síntoma dolor de garganta: negativo. </p>
+				    <th scope="row">2</th>
+				    <td>Tos</td>
 
-					{% endif %}
+					{% if p.tos %}
+		    
+						<td>Positivo </td>
+						    
+						{% else %}
+						        
+						<td>Negativo </td>
 
-				{% if p.dificultad_respiratoria %}
-    
-					<p>Presenta como síntoma dificultad para respirar: positivo. </p>
-					    
-					{% else %}
-					        
-					<p>Presenta como síntoma dificultad para respirar: negativo. </p>
+						{% endif %}
 
-					{% endif %}
+					</tr>
+				    <tr>
 
-				{% if p.dolor_muscular %}
-    
-					<p>Presenta como síntoma dolor muscular: positivo. </p>
-					    
-					{% else %}
-					        
-					<p>Presenta como síntoma dolor muscular: negativo. </p>
+				    <th scope="row">3</th>
+				    <td>Diarrea</td>
 
-					{% endif %}
+					{% if p.diarrea %}
+		    
+						<td>Positivo </td>
+						    
+						{% else %}
+						        
+						<td>Negativo </td>
 
-				{% if p.cefalea %}
-    
-					<p>Presenta como síntoma cefalea: positivo. </p>
-					    
-					{% else %}
-					        
-					<p>Presenta como síntoma cefalea: negativo. </p>
+						{% endif %}
 
-					{% endif %}
+					</tr>
+				    <tr>
 
-				{% if p.vomito %}
-    
-					<p>Presenta como síntoma vomito: positivo. </p>
-					    
-					{% else %}
-					        
-					<p>Presenta como síntoma vomito: negativo. </p>
+				    <th scope="row">4</th>
+				    <td>Dolor De Garganta</td>
 
-					{% endif %}
+					{% if p.dolor_garganta %}
+		    
+						<td>Positivo </td>
+						    
+						{% else %}
+						        
+						<td>Negativo </td>
 
-				{% if p.gusto_olfato %}
-    
-					<p>Presenta como síntoma pérdida de gusto u olfato: positivo. </p>
-					    
-					{% else %}
-					        
-					<p>Presenta como síntoma pérdida de gusto u olfato: negativo. </p>
+						{% endif %}
 
-					{% endif %}
+					</tr>
+				    <tr>
+
+				    <th scope="row">5</th>
+				    <td>Dificultades Respiratorias</td>
+
+					{% if p.dificultad_respiratoria %}
+		    
+						<td>Positivo </td>
+						    
+						{% else %}
+						        
+						<td>Negativo </td>
+
+						{% endif %}
+
+					</tr>
+				    <tr>
+
+				    <th scope="row">6</th>
+				    <td>Dolor Muscular</td>
+
+					{% if p.dolor_muscular %}
+		    
+						<td>Positivo </td>
+						    
+						{% else %}
+						        
+						<td>Negativo </td>
+
+						{% endif %}
+
+					</tr>
+				    <tr>
+
+				    <th scope="row">7</th>
+				    <td>Cefalea</td>
+
+					{% if p.cefalea %}
+		    
+						<td>Positivo </td>
+						    
+						{% else %}
+						        
+						<td>Negativo </td>
+
+						{% endif %}
+
+					</tr>
+				    <tr>
+
+				    <th scope="row">8</th>
+				    <td>Vomito</td>
+
+					{% if p.vomito %}
+		    
+						<td>Positivo </td>
+						    
+						{% else %}
+						        
+						<td>Negativo </td>
+
+						{% endif %}
+
+					</tr>
+				    <tr>
+
+				    <th scope="row">9</th>
+				    <td>Pérdida Gusto U Olfato</td>
+
+					{% if p.gusto_olfato %}
+		    
+						<td>Positivo </td>
+						    
+						{% else %}
+						        
+						<td>Negativo </td>
+
+						{% endif %}
+
+					</tr>
+				    <tr>
+
+				</tbody>
+			</table>
 
 				{% if p.resultado == "True" %}
-    
-					<h3> El resultado del autotest de COVID ha sido positivo. Por favor, no concurrir.</h3>
-					    
+
+	    
+					<h4 class="text-right"> Por favor, concurrir a un médico previamente. Usted presenta síntomas.</h4>
+				    
 					{% else %}
 					        
-					<h2> El resultado del autotest de COVID ha sido negativo.</h3>
-					<h3> Usted puede sacar un turno en cualquier local. </h2>
+					<h4 class="text-right"> Usted no representa ningún riesgo.</h4>
+					
+					<h4 class="text-right"> Puede proceder a obtener un turno en cualquier local. </h4>
+
+					<br>
+					
+
 
 					{% endif %}
 
+				<hr style="border-color:grey;width:100%;line-height: 30px;">
+				<hr style="color: #0056b2;" size="50" />
+
+			
+
 			{% endfor %}
+
+	
+		</div>
+	
+	</div>
+
+
+</div>
 
 
 {% endblock %}

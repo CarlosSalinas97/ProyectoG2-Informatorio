@@ -18,3 +18,9 @@ a:hover{
     text-decoration: none;
     color: black;
 }
+
+.nuevaLetra{
+
+	font-family:Monaco,Georgia,Times,serif;
+
+}

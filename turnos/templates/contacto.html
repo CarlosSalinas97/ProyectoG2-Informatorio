@@ -8,23 +8,59 @@
 <head>
 	<title>Contactanos</title>
 </head>
-<body>
-	
-	<h1>Contactanos</h1>
+	<body>
 
-	{% if form.errors %}
-	
-	<p style="color: red;">Por favor corrige lo siguiente:</p>
+		<section class="container">
+			
+			<div class="row mb-5 justify-content-center">
+				<h1 class= "mb-5 mt-5 justify-content-center text-white font-weight-bolder text-uppercase" >Contactanos</h1>	
+				{% if form.errors %}
+			
+					<p style="color: red;">Por favor corrige lo siguiente:</p>
 
-	{% endif %}
+				{% endif %}
+				<div class="col-10 bg-white p-5">
+					
+					<form method="POST">{% csrf_token %}
+						<div id="div_id_asunto" class="form-group row"> 
 
-	<form action="" method="post">{% csrf_token %}
-		<table>
-			{{ form|crispy }}
-		</table>
-		<input type="submit" value="Enviar">
-	</form>
-</body>
+							<label for="id_asunto" class="col-sm-4 col-form-label requiredField"><strong>Asunto</strong> <span class="asteriskField">*</span></label> 
+							<div class="col-sm-4"> 
+								<input type="text" name="asunto" value="" maxlength="100" class="form-control bg-light text-dark" id="id_asunto" placeholder="Ingrese el motivo del contacto"> 
+							</div> 
+						</div>
+
+						<div id="div_id_nombre" class="form-group row"> 
+
+							<label for="id_nombre" class="col-sm-4 col-form-label requiredField"><strong>Nombre y Apellido</strong> <span class="asteriskField">*</span></label> 
+							<div class="col-sm-4"> 
+								<input type="text" name="nombre" value="" maxlength="100" class="form-control bg-light text-dark" id="id_nombre" placeholder="Ingrese nombre y apellido"> 
+							</div> 
+						</div>
+
+						<div id="div_id_email" class="form-group row"> 
+							<label for="id_email" class="col-sm-4 col-form-label"><strong>Tu correo electronico</strong></label> 
+							<div class="col-sm-4">
+								<input type="email" name="email" value="" maxlength="150" class="form-control bg-light text-dark" id="id_email"placeholder="Introduzca su correo electrónico"> 
+							</div> 
+						</div>
+
+						<div id="div_id_mensaje" class="form-group row"> 
+							<label for="id_mensaje" class="col-sm-4 col-form-label requiredField"><strong>Mensaje</strong><span class="asteriskField">*</span></label> 
+							<div class="col-sm-4"> 
+								<textarea name="mensaje" cols="40" rows="10"  class="form-control bg-light text-dark" rrequired="" id="id_mensaje" placeholder="Ingrese su mensaje"></textarea> </div> 
+							</div> 
+
+						<div class="div.col align-self-center text-center">
+						
+							<button type="submit" class="btn btn-danger btn-sm font-weight-bold align-self-center text-center" style="border-radius: 40px;">Enviar</button>
+						
+						</div>
+				</div>
+			</div>
+		</section>
+
+	</body>
 </html>
 
 {% endblock%}

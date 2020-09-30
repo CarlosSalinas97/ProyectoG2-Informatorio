@@ -8,5 +8,5 @@ from django.urls import reverse_lazy
 class RegistroCliente(CreateView):
 	model = Usuario
 	form_class = ClienteForm
-	template_name = 'usuarios/registro_cliente.html'
+	template_name = 'cliente/registro_cliente.html'
 	success_url = reverse_lazy('home')
