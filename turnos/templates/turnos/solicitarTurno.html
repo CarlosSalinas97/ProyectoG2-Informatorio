@@ -3,15 +3,16 @@
 {% block contenido %}
     {{ form.media }}
         <script src="/static/js/botonesSolicitarTurno.js"></script>
+        <script src="/static/js/alertas.js"></script>
         
         <div class="container justify-content-center">
             <h1 class="text-center text-light pt-3 font-weight-bold">Solicitar Turno</h1>
         </div>
 
-        <div class="container bg-white d-flex justify-content-center align-items-center">
-            <form action="" method="post" enctype="multipart/form-data">{% csrf_token %}
-            <div class="row pt-5" style="height: 100px;">
-                    <div class="col-6" style="width: 300px;">
+        <div class="container bg-white justify-content-center mt-5 align-middle align-items-center" style="width: 40%; border-radius: 25px;">
+            <form action="" method="post" enctype="multipart/form-data" style="width: 100%;">{% csrf_token %}
+            <div class="row pt-5 justify-content-center" style="height: 100px;">
+                    <div class="col-6">
                         <p>
                             <label for="id_dia">Dia:</label>
                             <div class="input-group" id="div_id_dia" data-target-input="nearest" style="width: 200px;">
@@ -33,7 +34,7 @@
                             </script>
                         </p>
                     </div>
-                    <div class="col-6" style="width: 100px;">
+                    <div class="col-6">
                         <p><label for="id_horario">Horario:</label> <select name="horario" required id="id_horario">
                             <option value="" selected=""></option>
                             <option value="1">8 a 10</option>
@@ -44,36 +45,38 @@
                         </p>
                     </div>
             </div>
-            <div class="row pt-5">
-                <div class="col-12">
-                    {% if empresa.Rubro_id == 3 %}
-                    <span>¿Desea invitar a más personas? (Max. 3 personas).
-                        Ingrese solo el DNI.
-                    </span>
-                        <p>
-                            <label for="id_invitado1">Invitado:</label>
-                            <input type="text" name="invitado1" maxlength="8" autocomplete="off" id="id_invitado1" disabled>
-                            <button type="button" class="btn btn-success" id="+1" onclick="mostrar1()">+</button>
-                            <button type="button" class="btn btn-danger" id="-1" onclick="esconder1()" style="display:none;">-</button>
-                        </p>
+            {% if empresa.Rubro_id == 3 %}
+                <div class="row pt-5 mt-5 justify-content-center">
+                    <div class="col-12">
+                        <span>¿Desea invitar a más personas? (Max. 3 personas).
+                            Ingrese solo el DNI.
+                        </span>
+                            <p>
+                                <label for="id_invitado1">Invitado:</label>
+                                <input type="text" name="invitado1" maxlength="8" autocomplete="off" id="id_invitado1" disabled>
+                                <button type="button" class="btn btn-success" id="+1" onclick="mostrar1()">+</button>
+                                <button type="button" class="btn btn-danger" id="-1" onclick="esconder1()" style="display:none;">-</button>
+                            </p>
 
-                        <p>
-                            <label for="id_invitado2">Invitado:</label> 
-                            <input type="text" name="invitado2" maxlength="8" autocomplete="off" id="id_invitado2" disabled>
-                            <button type="button" class="btn btn-success" id="+2" onclick="mostrar2()" style="display:none;">+</button>
-                            <button type="button" class="btn btn-danger" id="-2" onclick="esconder2()" style="display:none;">-</button>
-                        </p>
+                            <p>
+                                <label for="id_invitado2">Invitado:</label> 
+                                <input type="text" name="invitado2" maxlength="8" autocomplete="off" id="id_invitado2" disabled>
+                                <button type="button" class="btn btn-success" id="+2" onclick="mostrar2()" style="display:none;">+</button>
+                                <button type="button" class="btn btn-danger" id="-2" onclick="esconder2()" style="display:none;">-</button>
+                            </p>
 
-                        <p>
-                            <label for="id_invitado3">Invitado:</label> 
-                            <input type="text" name="invitado3" maxlength="8" autocomplete="off" id="id_invitado3" disabled>
-                            <button type="button" class="btn btn-success" id="+3" onclick="mostrar3()" style="display:none;">+</button>
-                            <button type="button" class="btn btn-danger" id="-3" onclick="esconder3()" style="display:none;">-</button>
-                        </p>
-                    {% endif %}
+                            <p>
+                                <label for="id_invitado3">Invitado:</label> 
+                                <input type="text" name="invitado3" maxlength="8" autocomplete="off" id="id_invitado3" disabled>
+                                <button type="button" class="btn btn-success" id="+3" onclick="mostrar3()" style="display:none;">+</button>
+                                <button type="button" class="btn btn-danger" id="-3" onclick="esconder3()" style="display:none;">-</button>
+                            </p>
+                    </div>
                 </div>
-            </div> 
-            <button type="submit" class="btn btn-info" value='Crear'>Solicitar turno</button>
+            {% endif %}
+                <div class="container d-flex justify-content-center mx-auto align-items-center mt-5">
+                    <input type="submit" value="Solicitar turno" class="bg-info pl-3 pr-3 pt-2 pb-2 mb-5 border-0 text-white font-weight-bold mr-2" style="border-radius: 50px;">
+                </div>
             </form>
             <br>
             <br>

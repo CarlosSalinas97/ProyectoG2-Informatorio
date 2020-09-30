@@ -8,6 +8,9 @@
 	{% load static %}
 	<link rel="stylesheet" href="{% static 'css/base.css' %}">
 	<!-- Scripts -->
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -27,7 +30,8 @@
 				<nav class="navbar navbar-expand-sm">
 					<ul class="navbar-nav" style="font-size: 20px;">
 						<li class="nav-item pl-5 pr-5"><a href="{% url 'nosotros' %}">Nosotros</a></li>
-						<li class="nav-item pl-5 pr-5"><a href="{% url 'contacto' %}">Contacto</a>
+						<li class="nav-item pl-5 pr-5"><a href="{% url 'contacto' %}">Contacto</a></li>
+						<li class="nav-item pl-5 pr-5"><a href="{% url 'cuidados' %}">Cuidados</a></li>
 					</ul>
 				</nav>
 			</div>

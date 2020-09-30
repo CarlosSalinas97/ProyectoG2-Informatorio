@@ -26,6 +26,7 @@ urlpatterns = [
     path('',views.Home,name='home'),
     path('contacto',views.contacto,name='contacto'),
     path('nosotros',views.nosotros, name='nosotros'),
+    path('cuidados',views.cuidados, name='cuidados'),
     path('Login',auth.LoginView.as_view(template_name="usuarios/login.html"),name="login"),
     path('Logout',auth.LogoutView.as_view(),name="logout"),
 

@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views.generic import CreateView
 from django.views.generic.edit import UpdateView, ModelFormMixin
 from django.views.generic.list import ListView
@@ -48,14 +48,13 @@ def SolicitarTurno(request, pk):
 		else:
 			#Informar que no puede entrar
 			return HttpResponseRedirect('/')
-
 	#El cliente no tiene un testPositivo asignado
 	#Controla que el test se encuentre realizado hace como mucho 7 días. Caso contrario, lo redirije a realizar un nuevo test
 	if resta > 7:
 		#Se borra la evaluacion anterior
 		evaluacion.delete()
 		#Tiene que rehacer la autoevaluacion
-		CrearEvaluacion()
+		return HttpResponseRedirect('http://localhost:8000/autoevaluacion/testFuncion/')
 	else:
 		#Controla que el test haya resultado negativo. Puede proceder a sacar un turno
 		if evaluacion.resultado == 'False':
@@ -67,7 +66,7 @@ def SolicitarTurno(request, pk):
 					x.DNI = request.user
 					x.id_local = Empresa.objects.get(CUIT = pk)
 					x.save()
-					return HttpResponseRedirect('/')
+					return HttpResponseRedirect('/cuidados')
 			else:
 				form = AltaTurno()
 

@@ -28,3 +28,6 @@ def contacto(request):
 
 def nosotros(request):
 	return render(request,'nosotros.html')
+
+def cuidados(request):
+	return render(request, 'cuidadosPrevios.html')
